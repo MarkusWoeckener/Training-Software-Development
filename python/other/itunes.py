@@ -7,8 +7,13 @@ hourly = o["hourly"]
 areaOfModule = 1.2 * 0.8
 print("Modulfläche:", areaOfModule, "m²")
 
-for t in hourly["time"]:
-    print(t)
+t = hourly["time"]
+sun = hourly["global_tilted_irradiance_instant"]
+result = dict(zip(t, sun))
+print(result)
 
-for result in hourly["global_tilted_irradiance_instant"]:
-    print(round((result * areaOfModule)))
+#for t in hourly["time"]:
+#    print(t)
+
+#for result in hourly["global_tilted_irradiance_instant"]:
+ #   print(round((result * areaOfModule)))
