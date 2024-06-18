@@ -1,21 +1,36 @@
-from time import localtime as t
-from os import system
+# script that asks user for their name,
+# then greets them and prints currend date and time
 
-def main():
-    name = getName()
+from time import strftime as t
+import os
+
+def main() -> None:
+    name: str = getName()
     printName(name)
     printTime()
-    
+
+# ask the user for a name, capitalise every word from the input
+# strip leading and trailing spaces and return the name
 def getName() -> str:
-    system("cls")
+    clear_console()
     return input("Name: ").title().strip()
 
-def printName(name):
-    system("cls")
+# print a greeting to the user
+def printName(name: str) -> None:
+    clear_console()
     print(f"Hallo {name}!")
 
-def printTime():
-    print("Datum: %02d.%02d.%02d" %(t().tm_mday, t().tm_mon, t().tm_year))
-    print("Uhrzeit: %02d:%02d:%02d" %(t().tm_hour, t().tm_min, t().tm_sec))
+# print the current date and time
+def printTime() -> None:
+    print("Datum:", t("%d.%m.%Y"))
+    print("Uhrzeit:" , t("%H:%M:%S"))
 
-main()
+# os-independent function to clear the console
+def clear_console() -> None:
+    if os.name == "nt": #Windows based OS
+        os.system("cls")
+    else: #Unix based OS
+        os.system("clear")
+
+if __name__ == "__main__":
+    main()

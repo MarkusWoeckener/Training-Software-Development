@@ -1,8 +1,11 @@
+# script for user configured dice rolls
+# to-do: input validation and error handling, better comments
+
 import random
-from os import system
+import os
 
 def main() -> None:
-    system("cls") # clear screen
+    clearScreen() # clear screen
     print("Please specify the dice roll:")
     sides: int = getSides() # get number of sides
     numberOfDice: int = getNumber() # get number of dice
@@ -28,6 +31,12 @@ def rollDice(sides, rolls) -> list[int]:
 def printResult(results, mod) -> None:
     print(f"The dice roll is:", *results)
     print("Sum:", sum(results) + mod)
+
+def clearScreen() -> None:
+    if os.name == "nt": #for Windows systems
+        os.system("cls")
+    else: #for Unix based systems
+        os.system("clear")
 
 if __name__ == "__main__":
     main()
