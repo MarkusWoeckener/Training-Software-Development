@@ -1,7 +1,8 @@
-# script that checks user input for
-# upper- und lower-case letters
-# minimum length
-# and hides the input with "*"
+# script that prompts for a password
+# checks user input for
+#   upper- und lower-case letters
+#   minimum length
+# and hides the input
 
 import getpass
 
