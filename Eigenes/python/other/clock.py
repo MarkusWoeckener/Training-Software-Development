@@ -1,6 +1,6 @@
 from time import localtime as t
 from os import system
-import keyboard
+import msvcrt
 
 def main() -> None:
     printInstruction()
@@ -13,7 +13,8 @@ def printInstruction() -> None:
 def clock() -> None:
     while True:
         print("%02d:%02d:%02d\r" %(t().tm_hour, t().tm_min, t().tm_sec), end="")
-        if keyboard.is_pressed("space"): 
+        if msvcrt.kbhit():
+            print("")
             break
 
 if __name__ == "__main__":
