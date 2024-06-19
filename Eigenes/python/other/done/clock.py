@@ -15,6 +15,7 @@ def printInstruction() -> None:
 def clock() -> None:
     #start the keyboard listener
     global listener
+    #when any key is pressed call on_press
     listener = keyboard.Listener(on_press=on_press)
     listener.start()
     try:
@@ -22,6 +23,7 @@ def clock() -> None:
         while listener.running:
             print(t("%H:%M:%S")+"\r", end="")
             time.sleep(0.1)
+    #handle the KeyboardInterrupt exception when the user presses [ctrl+c]
     except KeyboardInterrupt:
         print("You pressed [Ctrl+C] to exit")
         listener.stop()
