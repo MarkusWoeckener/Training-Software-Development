@@ -18,7 +18,8 @@ from tkinter import ttk
 def main():
     # Create the GUI window
     root = tk.Tk()
-    root.title("Backup Tool")
+    root.title("Backup Tool")  # Set the window title
+    root.geometry("400x200")  # Set the window size
 
     # Select source directory
     source_dir_label = ttk.Label(root, text="Select source directory:")
@@ -26,11 +27,21 @@ def main():
     source_dir_button = tk.Button(root, text="Select Source", command=select_source_dir)
     source_dir_button.pack()
 
+    # Display selected source directory
+    global source_dir_display
+    source_dir_display = ttk.Label(root, text="")
+    source_dir_display.pack()
+
     # Select target directory
     target_dir_label = ttk.Label(root, text="Select target directory:")
     target_dir_label.pack()
     target_dir_button = tk.Button(root, text="Select Target", command=select_target_dir)
     target_dir_button.pack()
+
+    # Display selected target directory
+    global target_dir_display
+    target_dir_display = ttk.Label(root, text="")
+    target_dir_display.pack()
 
     # Start backup button
     start_button = tk.Button(root, text="Start Backup", command=start_backup)
@@ -43,11 +54,13 @@ def select_source_dir():
     """Opens file dialog to select the source directory."""
     global sourceDir
     sourceDir = filedialog.askdirectory(title="Select Source Directory")
+    source_dir_display.config(text=sourceDir)
     
 def select_target_dir():
     """Opens file dialog to select the target directory."""
     global targetDir
     targetDir = filedialog.askdirectory(title="Select Target Directory")
+    target_dir_display.config(text=targetDir)
 
 def start_backup():
     """Starts the backup process."""
@@ -110,4 +123,4 @@ def create_backup(source_dir: str, target_dir: str):
 
 
 if __name__ == "__main__":
-  main()
+    main()
