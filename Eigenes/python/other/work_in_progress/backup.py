@@ -15,8 +15,8 @@ from tkinter import filedialog
 from tkinter import ttk
 
 
-def main():
-    # Create the GUI window
+def create_gui():
+    """Creates the GUI for the backup tool."""
     root = tk.Tk()
     root.title("Backup Tool")  # Set the window title
     root.geometry("400x200")  # Set the window size
@@ -47,8 +47,13 @@ def main():
     start_button = tk.Button(root, text="Start Backup", command=start_backup)
     start_button.pack()
 
-    # Run the GUI event loop
+    return root
+
+def main():
+    """Main function to run the backup tool."""
+    root = create_gui()
     root.mainloop()
+
 
 def select_source_dir():
     """Opens file dialog to select the source directory."""
@@ -123,4 +128,5 @@ def create_backup(source_dir: str, target_dir: str):
 
 
 if __name__ == "__main__":
-    main()
+    root = create_gui()
+    root.mainloop()
