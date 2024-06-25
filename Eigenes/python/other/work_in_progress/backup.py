@@ -19,7 +19,7 @@ def create_gui():
     """Creates the GUI for the backup tool."""
     root = tk.Tk()
     root.title("Backup Tool")  # Set the window title
-    root.geometry("300x210")  # Set the window size
+    root.geometry("300x250")  # Set the window size
 
     # Select source directory
     # Label
@@ -128,6 +128,7 @@ def create_backup(source_dir: str, target_dir: str):
                 shutil.copy2(source_file, target_file)
                 n_files_copied += 1
 
+            
     # Status messages after running backup. Console output to be removed later.
     print(f"Backup created successfully from '{source_dir}' to '{target_dir}'")
     print(f"Number of files copied: {n_files_copied}")
