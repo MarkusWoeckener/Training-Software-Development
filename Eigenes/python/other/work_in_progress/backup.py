@@ -25,7 +25,7 @@ def create_gui():
     source_dir_label = ttk.Label(root, text="Select source directory:")
     source_dir_label.pack()
     source_dir_button = tk.Button(root, text="Select Source", command=select_source_dir)
-    source_dir_button.pack()
+    source_dir_button.pack(pady=2)
 
     # Display selected source directory
     global source_dir_display
@@ -36,7 +36,7 @@ def create_gui():
     target_dir_label = ttk.Label(root, text="Select target directory:")
     target_dir_label.pack()
     target_dir_button = tk.Button(root, text="Select Target", command=select_target_dir)
-    target_dir_button.pack()
+    target_dir_button.pack(pady=2)
 
     # Display selected target directory
     global target_dir_display
@@ -45,7 +45,10 @@ def create_gui():
 
     # Start backup button
     start_button = tk.Button(root, text="Start Backup", command=start_backup)
-    start_button.pack()
+    start_button.pack(pady=5)
+    global finish_message
+    finish_message = ttk.Label(root, text="")
+    finish_message.pack()
 
     return root
 
@@ -125,6 +128,7 @@ def create_backup(source_dir: str, target_dir: str):
 
     print(f"Backup created successfully from '{source_dir}' to '{target_dir}'")
     print(f"Number of files copied: {n_files_copied}")
+    finish_message.config(text=f"Number of files copied: {n_files_copied}")
 
 
 if __name__ == "__main__":
