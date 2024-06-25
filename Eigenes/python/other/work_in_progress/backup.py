@@ -8,8 +8,8 @@
 import os
 import shutil
 import hashlib
-import time #for later schedule implementation
-import schedule #for later schedule implementation
+#import time #for later schedule implementation
+#import schedule #for later schedule implementation
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import ttk
@@ -19,25 +19,27 @@ def create_gui():
     """Creates the GUI for the backup tool."""
     root = tk.Tk()
     root.title("Backup Tool")  # Set the window title
-    root.geometry("400x200")  # Set the window size
+    root.geometry("300x210")  # Set the window size
 
     # Select source directory
+    # Label
     source_dir_label = ttk.Label(root, text="Select source directory:")
     source_dir_label.pack()
-    source_dir_button = tk.Button(root, text="Select Source", command=select_source_dir)
+    # Button
+    source_dir_button = tk.Button(root, text="Source dirctory", command=select_source_dir)
     source_dir_button.pack(pady=2)
-
     # Display selected source directory
     global source_dir_display
     source_dir_display = ttk.Label(root, text="")
     source_dir_display.pack()
 
     # Select target directory
+    # Label
     target_dir_label = ttk.Label(root, text="Select target directory:")
     target_dir_label.pack()
-    target_dir_button = tk.Button(root, text="Select Target", command=select_target_dir)
+    # Button
+    target_dir_button = tk.Button(root, text="Target directory", command=select_target_dir)
     target_dir_button.pack(pady=2)
-
     # Display selected target directory
     global target_dir_display
     target_dir_display = ttk.Label(root, text="")
@@ -46,6 +48,8 @@ def create_gui():
     # Start backup button
     start_button = tk.Button(root, text="Start Backup", command=start_backup)
     start_button.pack(pady=5)
+
+    # Status message after running the backup
     global finish_message
     finish_message = ttk.Label(root, text="")
     finish_message.pack()
@@ -56,7 +60,6 @@ def main():
     """Main function to run the backup tool."""
     root = create_gui()
     root.mainloop()
-
 
 def select_source_dir():
     """Opens file dialog to select the source directory."""
@@ -72,9 +75,8 @@ def select_target_dir():
 
 def start_backup():
     """Starts the backup process."""
-    if sourceDir and targetDir:
-        #Run single backup without schedule for now
-        create_backup(sourceDir, targetDir)
+    if sourceDir and targetDir: #check if directories are selected
+        create_backup(sourceDir, targetDir) #Run single backup without schedule for now
     else:
         print("Please select source and target directories.")
 
@@ -126,6 +128,7 @@ def create_backup(source_dir: str, target_dir: str):
                 shutil.copy2(source_file, target_file)
                 n_files_copied += 1
 
+    # Status messages after running backup. Console output to be removed later.
     print(f"Backup created successfully from '{source_dir}' to '{target_dir}'")
     print(f"Number of files copied: {n_files_copied}")
     finish_message.config(text=f"Number of files copied: {n_files_copied}")
