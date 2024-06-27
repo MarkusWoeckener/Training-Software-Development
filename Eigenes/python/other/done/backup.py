@@ -1,15 +1,12 @@
 # Script to create a backup of a selectable souce directory to a target directory
 # Only copy files that were changed or don't exist in the backup dir (done)
-# The script should get a simple, modern GUI to:
-# Select source and target directory: wip, basic functionality done but to be improved
-# Create a schedule (optional): tabled for now
-# Display a progress bar (optional)
+# The script should get a simple GUI to:
+# Select source and target directory: done
+# Give the number of copied files after backup is done: done
 
 import os
 import shutil
 import hashlib
-#import time #for later schedule implementation
-#import schedule #for later schedule implementation
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import ttk
@@ -55,11 +52,6 @@ def create_gui():
     finish_message.pack()
 
     return root
-
-def main():
-    """Main function to run the backup tool."""
-    root = create_gui()
-    root.mainloop()
 
 def select_source_dir():
     """Opens file dialog to select the source directory."""
@@ -134,7 +126,7 @@ def create_backup(source_dir: str, target_dir: str):
     print(f"Number of files copied: {n_files_copied}")
     finish_message.config(text=f"Number of files copied: {n_files_copied}")
 
-
+# Main loop to run the GUI
 if __name__ == "__main__":
     root = create_gui()
     root.mainloop()
