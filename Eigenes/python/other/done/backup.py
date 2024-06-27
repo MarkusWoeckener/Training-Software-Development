@@ -44,7 +44,7 @@ def create_gui():
 
     # Start backup button
     start_button = tk.Button(root, text="Start Backup", command=start_backup)
-    start_button.pack(pady=5)
+    start_button.pack(pady=10)
 
     # Status message after running the backup
     global finish_message
