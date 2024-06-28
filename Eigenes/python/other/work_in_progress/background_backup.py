@@ -1,0 +1,1 @@
+#this will do daily iterative backups and weekly full backups 
