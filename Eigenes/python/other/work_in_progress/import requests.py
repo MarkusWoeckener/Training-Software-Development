@@ -70,7 +70,7 @@ def visualize_forecast(timestamps, energy_output_panel1, energy_output_panel2):
 if __name__ == "__main__":
     latitude = 52.3712
     longitude = 10.1313
-    module_area = 1.2 * 0.8
+    module_area = 1.7 * 1.1
     panel_efficiency = 0.20
 
     try:
