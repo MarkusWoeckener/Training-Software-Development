@@ -107,7 +107,7 @@ def printResult(results: "list[int]", mod: int) -> None:
     returns:
         None
     """
-    print(f"The dice roll is:", *results)
+    print("The dice roll is:", *results, "{:+d}".format(mod))
     print("Sum:", sum(results) + mod)
 
 def clearScreen() -> None:
