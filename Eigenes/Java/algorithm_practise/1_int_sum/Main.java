@@ -26,7 +26,7 @@ public class Main {
 
         //Check for the given logic and print the result
         if (a == b) {
-            System.out.println(a * 3);
+            System.out.println((a + b) * 3);
         } else {
             System.out.println(a + b);
         }
