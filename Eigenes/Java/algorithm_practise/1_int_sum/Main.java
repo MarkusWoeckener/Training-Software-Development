@@ -13,7 +13,7 @@ public class Main {
         //Start scanner to read the input
         Scanner scanner = new Scanner(System.in);
         //Ask for input
-        System.out.println("Enter two integers separated by a comma:");
+        System.out.print("Enter two integers separated by a comma: ");
         String input = scanner.nextLine();
         //Close the scanner
         scanner.close();
