@@ -6,8 +6,16 @@ Print new string.
 */
 
 //ask user for a string
-echo("Enter a string: ");
-$string = trim(fgets(STDIN));
+while (true) {
+    echo("Enter a string: ");
+    $string = trim(fgets(STDIN));
+    //check if $string is at least 2 chars long
+    if (strlen($string) >= 2) {
+        break;
+    }
+    echo("String must be at least 2 chars long.\n");
+}
+
 
 //isolate first and last char
 $first_char = $string[0];
