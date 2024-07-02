@@ -8,8 +8,9 @@ and 200 print "True".
 $number = readline("Enter a number: ");
 
 # Check if $number is within one of the given ranges
-if 90 <= $number <= 110 || 190 <= $number <= 210 {
+if ((90 <= $number && $number <= 110) || (190 <= $number && $number <= 210)) {
     echo "True";
-} else {
+} 
+else {
     echo "False";
 }
