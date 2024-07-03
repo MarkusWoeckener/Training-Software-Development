@@ -23,6 +23,7 @@ BACKUP_FOLDER = r"H:\test_backup"
 #Define backup schedule
 DAILY_BACKUP_DAYS = [0, 1, 2, 3] #Mon - Thu
 FULL_BACKUP_DAY = 4 #Fri
+DAILY_BACKUP_FOLDER = "daily"
 WEEKLY_BACKUP_FOLDER = "weekly"
 MONTHLY_BACKUP_FOLDER = "monthly"
 
@@ -66,7 +67,7 @@ def daily_backup(event: FileSystemEvent):
     #Get current date and time
     now = datetime.datetime.now()
     #Create daily backup folder
-    daily_backup_folder = os.path.join(BACKUP_FOLDER, WEEKLY_BACKUP_FOLDER, now.strftime("%Y-%m-%d"))
+    daily_backup_folder = os.path.join(BACKUP_FOLDER, DAILY_BACKUP_FOLDER, now.strftime("%Y-%m-%d"))
     if not os.path.exists(daily_backup_folder):
         os.makedirs(daily_backup_folder)
     #Get relative path of the modified file
