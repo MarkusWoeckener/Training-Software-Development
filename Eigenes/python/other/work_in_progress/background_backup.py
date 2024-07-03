@@ -1,96 +1,137 @@
 # Script that runs in the background and does backups.
-# A watchdog should listen for files being saved in the source folder
+# A watchdog should listen for changed files being saved in the source folder
 # Backup Plan:
 # Mon - Thu: iterative backup of every file saved in a daily folder
 # Fri: full backup of source folder in a seperate folder
 # Keep all folders for the current week, delete all but Fri of the week before
 # last Fri of the month only keep the last Fri
 
+
 import os
-import time
+import shutil
 import datetime
-import watchdog.observers
+import time
+import schedule
+from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+from watchdog.events import FileSystemEvent
 
-# Define source and backup folder
-source_folder: str = "/put/source/folder/here"
-backup_folder: str = "/put/backup/folder/here"
+#Define source and backup folders
+SOURCE_FOLDER = r"D:\Ausbildung"
+BACKUP_FOLDER = r"H:\test_backup"
 
-# Define backup schedule
-backup_schedule: dict = {
-    0: "daily", #Monday
-    1: "daily", #Tuesday
-    2: "daily", #Wednesday
-    3: "daily", #Thursday
-    4: "daily", #Friday
-    5: "daily", #Saturday
-    6: "daily", #Sunday
-}
+#Define backup schedule
+DAILY_BACKUP_DAYS = [0, 1, 2, 3] #Mon - Thu
+FULL_BACKUP_DAY = 4 #Fri
+WEEKLY_BACKUP_FOLDER = "weekly"
+MONTHLY_BACKUP_FOLDER = "monthly"
 
-# Define backup retention policy
-retention_policy: dict = {
-    "daily": 7, #keep daily backups 7 days
-    "full": 4, #keep weekly full backups 4 weeks
-    "monthly": 12, #keep monthly backups 12 months
-}
 
-class BackupHandler(FileSystemEventHandler):
-    def on_modified(self, event):
-        if event.is_directory:
-            return None
-        
-        # Get current day and backup type
-        today = datetime.date.today()
-        backup_type = backup_schedule[today.weekday()]
-
-        # Create backup folder for the day
-        backup_path = os.path.join(backup_folder, today.strftime("%Y-%m-%d"))
-        os.makedirs(backup_path, exist_ok=True)
-
-        # Perform backup based on schedule
-        if backup_type == "daily":
-            # Copy modified files to daily folder
-            source_file = event.src_path
-            backup_file = os.path.join(backup_path, os.path.basename(source_file))
-            os.copy(source_file, backup_file)
-        elif backup_type == "full":
-            # Copy all files to full backup folder
-            full_backup_path = os.path.join(backup_folder, "full_backups", today.strftime("%Y-%m-%d"))
-            os.makedirs(full_backup_path, exist_ok=True)
-            for root, _, files in os.walk(source_folder):
-                for file in files:
-                    source_file = os.path.join(root, file)
-                    backup_file = os.path.join(full_backup_path, os.relpath(source_file, source_folder))
-                    os.makedirs(os.path.dirname(backup_file), exist_ok=True)
-                    os.copy(source_file, backup_file)
-
-        # Clean up old backups
-        self.cleanup_backups()
-
-    def cleanup_backups(self):
-        for backup_type in ["daily", "full", "monthly"]:
-            backup_dir = os.path.join(backup_folder, backup_type)
-            for folder in os.listdir(backup_dir):
-                folder_path = os.path.join(backup_dir, folder)
-                if os.path.isdir(folder_path):
-                    folder_date = datetime.datetime.strptime(folder, "%Y-%m-%d").date()
-                    if (datetime.date.today() - folder_date).days > retention_policy[backup_type]:
-                        os.rmdir(folder_path)
-
-if __name__ == "__main__":
-    # Create watchdog observer
-    event_handler = BackupHandler()
-    observer = watchdog.observers.Observer()
-    observer.schedule(event_handler, source_folder, recursive=True)
-
-    # Start the observer
+#Run the observer
+def run_observer():
+    """
+    Starts the watchdog observer to monitor the source folder.
+    """
+    event_handler = Handler()
+    observer = Observer()
+    observer.schedule(event_handler, SOURCE_FOLDER, recursive=True)
     observer.start()
-
-    # Keep the script running
     try:
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
         observer.stop()
+    observer.join()
 
-        observer.join()                        
+#Define the handler class for the watchdog
+class Handler(FileSystemEventHandler):
+    """
+    Handles file system events and triggers backups based on the schedule.
+    """
+    def on_modified(self, event: FileSystemEvent):
+        """
+        Handles file modification events.
+        """
+        #Get current day of the week
+        day_of_week = datetime.datetime.now().weekday()
+        #Check if it's a daily backup day
+        if day_of_week in DAILY_BACKUP_DAYS:
+            daily_backup(event)
+        
+#Daily real time backup of changed files
+def daily_backup(event: FileSystemEvent):
+    """
+    Performs a daily backup of modified files.
+    """
+    #Get current date and time
+    now = datetime.datetime.now()
+    #Create daily backup folder
+    daily_backup_folder = os.path.join(BACKUP_FOLDER, WEEKLY_BACKUP_FOLDER, now.strftime("%Y-%m-%d"))
+    if not os.path.exists(daily_backup_folder):
+        os.makedirs(daily_backup_folder)
+    #Get relative path of the modified file
+    relative_path = os.path.relpath(event.src_path, SOURCE_FOLDER)
+    #Create the corresponding path in the daily backup folder
+    backup_path = os.path.join(daily_backup_folder, relative_path)
+    if not os.path.exists(backup_path):
+        os.makedirs(backup_path)
+    #Copy the modified file to the daily backup folder
+    shutil.copy2(event.src_path, backup_path)
+    print(f"File {event.src_path} backed up to {backup_path}")
+
+#Full backup of the source folder
+def full_backup():
+    """
+    Performs a full backup of the source folder.
+    """
+    #Get current date and time
+    now = datetime.datetime.now()
+    #Create full backup folder
+    full_backup_folder = os.path.join(BACKUP_FOLDER, WEEKLY_BACKUP_FOLDER, now.strftime("%Y-%m-%d"))
+    if not os.path.exists(full_backup_folder):
+        os.makedirs(full_backup_folder)
+    #Copy the entire source folder to the full backup folder
+    shutil.copytree(SOURCE_FOLDER, full_backup_folder)
+    print(f"Full backup of {SOURCE_FOLDER} saved to {full_backup_folder}")
+
+#Weekly backup cleanup
+def weekly_cleanup():
+    """
+    Cleans up weekly backup folders.
+    """
+    #Get current date and time
+    now = datetime.datetime.now()
+    #Get last week's backup folder
+    last_week_folder = os.path.join(BACKUP_FOLDER, WEEKLY_BACKUP_FOLDER, now.strftime("%Y-%m-%d"))
+    #Delete all folders from last week except for Friday's backup
+    for folder in os.listdir(last_week_folder):
+        if folder != now.strftime("%Y-%m-%d"):
+            shutil.rmtree(os.path.join(last_week_folder, folder))
+    print(f"Weekly backup cleanup completed.")
+
+#Monthly backup cleanup
+def monthly_cleanup():
+    """
+    Cleans up monthly backup folders.
+    """
+    #Get current date and time
+    now = datetime.datetime.now()
+    #Get last month's backup folder
+    last_month_folder = os.path.join(BACKUP_FOLDER, MONTHLY_BACKUP_FOLDER, now.strftime("%Y-%m"))
+    #Delete all folders from last month except for the last Friday's backup
+    for folder in os.listdir(last_month_folder):
+        if folder != now.strftime("%Y-%m-%d"):
+            shutil.rmtree(os.path.join(last_month_folder, folder))
+    print(f"Monthly backup cleanup completed.")
+
+#Main function to run the backup script
+if __name__ == "__main__":
+    #Run the observer
+    run_observer()
+    #Run weekly backup and cleanups using a schedule
+    schedule.every().friday.at("10:00").do(full_backup)
+    schedule.every().friday.at("10:05").do(weekly_cleanup)
+    schedule.every().month.at("10:15").do(monthly_cleanup)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
