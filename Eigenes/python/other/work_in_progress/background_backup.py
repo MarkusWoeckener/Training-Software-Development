@@ -77,8 +77,12 @@ def daily_backup(event: FileSystemEvent):
     if not os.path.exists(backup_path):
         os.makedirs(backup_path)
     #Copy the modified file to the daily backup folder
-    shutil.copy2(event.src_path, backup_path)
-    print(f"File {event.src_path} backed up to {backup_path}")
+    try:
+        shutil.copy2(event.src_path, backup_path)
+        print(f"File {event.src_path} backed up to {backup_path}")
+    except Exception as e:
+        print(f"Error backing up file {event.src_path}: {e}")
+
 
 #Full backup of the source folder
 def full_backup():
