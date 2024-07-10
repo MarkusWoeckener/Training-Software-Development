@@ -9,13 +9,13 @@ Pseudocode:
 Anfang
 int zahl = 0
 bool bedingung = false
-
 Wiederhole, solange bedingung = false
-    Eingabe "Geben sie eine Zahl zwischen 0 und 10 ein:" zahl
-    Wenn 0 <= zahl >= 10
+    Ausgabe: "Geben sie eine Zahl zwischen 0 und 10 ein:"
+    Eingabe: zahl
+    Wenn 0 <= zahl <= 10
         bedingung = true
     Sonst
-        Ausgabe "Die Zahl muss zwischen 0 und 10 liegen"
+        Ausgabe: "Die Zahl muss zwischen 0 und 10 liegen"
     Ende Wenn
 Ende Wiederhole
 Ausgabe: "Ihre Eingabe war: zahl"
