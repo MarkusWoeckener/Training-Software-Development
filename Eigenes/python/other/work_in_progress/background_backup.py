@@ -81,7 +81,9 @@ def daily_backup(event: FileSystemEvent):
         time.sleep(0.1) #attempt to slow the process down to avoid some of the errors
         shutil.copy2(event.src_path, backup_path)
         print(f"File {event.src_path} backed up to {backup_path}")
-    #todo: Add handling for Permission Errors
+    #Error handling, ignore PermissionError for now to easier find other Error messages
+    except PermissionError:
+        pass
     except Exception as e:
         print(f"Error backing up file {event.src_path}: {e}")
 
