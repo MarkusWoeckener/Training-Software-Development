@@ -78,8 +78,9 @@ def daily_backup(event: FileSystemEvent):
         os.makedirs(backup_path)
     #Copy the modified file to the daily backup folder
     try:
-        shutil.copy2(event.src_path, backup_path)
-        print(f"{now.strftime('%H:%M:%S %Y-%m-%d ')} File {event.src_path} backed up to {backup_path}")
+        if not event.src_path.endswith(".tmp"): #exclude .tmp files from backup
+            shutil.copy2(event.src_path, backup_path)
+            print(f"{now.strftime('%H:%M:%S %Y-%m-%d ')} File {event.src_path} backed up to {backup_path}")
     #Error handling, ignore PermissionError for now to easier find other Error messages
     except PermissionError:
         pass
