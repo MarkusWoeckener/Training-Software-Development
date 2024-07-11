@@ -27,6 +27,11 @@ DAILY_BACKUP_FOLDER = "daily"
 WEEKLY_BACKUP_FOLDER = "weekly"
 MONTHLY_BACKUP_FOLDER = "monthly"
 
+#Define counter variables for copied files and raised errors
+copied_files: int = 0
+errors: int = 0
+permission_errors: int = 0
+
 
 #Run the observer
 def run_observer():
@@ -64,6 +69,9 @@ def daily_backup(event: FileSystemEvent):
     """
     Performs a daily backup of modified files.
     """
+    global copied_files
+    global errors
+    global permission_errors
     #Get current date and time
     now = datetime.datetime.now()
     #Create daily backup folder
@@ -80,11 +88,17 @@ def daily_backup(event: FileSystemEvent):
     try:
         if not event.src_path.endswith(".tmp"): #exclude .tmp files from backup
             shutil.copy2(event.src_path, backup_path)
+            copied_files += 1
             print(f"{now.strftime('%H:%M:%S %Y-%m-%d ')} File {event.src_path} backed up to {backup_path}")
+            print(f"Copied {copied_files} files")
+            print(f"Raised PermissionErrors: {permission_errors}")
+            print(f"Raised other errors: {errors}")
     #Error handling, ignore PermissionError for now to easier find other Error messages
     except PermissionError:
+        permission_errors += 1
         pass
     except Exception as e:
+        errors += 1
         print(f"{now.strftime('%H:%M:%S %Y-%m-%d ')} Error backing up file {event.src_path}: {e}")
 
 
