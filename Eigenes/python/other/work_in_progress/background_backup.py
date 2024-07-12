@@ -21,7 +21,7 @@ SOURCE_FOLDER = r"D:\Ausbildung"
 BACKUP_FOLDER = r"H:\test_backup"
 
 #Define backup schedule
-DAILY_BACKUP_DAYS = [0, 1, 2, 3] #Mon - Thu
+DAILY_BACKUP_DAYS = [0, 1, 2, 3, 4] #Mon - Fri
 FULL_BACKUP_DAY = 4 #Fri
 DAILY_BACKUP_FOLDER = "daily"
 WEEKLY_BACKUP_FOLDER = "weekly"
@@ -152,7 +152,7 @@ if __name__ == "__main__":
     #Run the observer
     run_observer()
     #Run weekly backup and cleanups using a schedule
-    schedule.every().friday.at("10:00").do(full_backup)
+    schedule.every().friday.at("11:00").do(full_backup)
     schedule.every().friday.at("10:05").do(weekly_cleanup)
     schedule.every().month.at("10:15").do(monthly_cleanup)
     while True:
