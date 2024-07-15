@@ -8,7 +8,7 @@ int i = 0
 wiederhole, solange i < 100
     zahl += 1
     i++
-    Ausgabe: zahl
+    Ausgabe:     zahl
 Ende wiederhole
 Ende
 */
@@ -20,4 +20,10 @@ while ($i < 100) {
     $i++;
     echo $zahl . ", ";
 }
+
+//kürzere Alternative:
+for ($z = 1; $z <= 100; $z++) {
+    echo $z . ", ";
+}
+
 ?>
