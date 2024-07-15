@@ -114,6 +114,7 @@ def full_backup():
     if not os.path.exists(full_backup_folder):
         os.makedirs(full_backup_folder)
     #Copy the entire source folder to the full backup folder
+    print("Running weekly backup...")
     shutil.copytree(SOURCE_FOLDER, full_backup_folder)
     print(f"Full backup of {SOURCE_FOLDER} saved to {full_backup_folder}")
 
