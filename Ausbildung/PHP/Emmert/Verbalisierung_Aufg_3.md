@@ -17,7 +17,7 @@ Zwei verschachtelte Rechtecke, kleines Rechteck rechts unten
         links vom Dreieck (Ja):
             Rechteck: Ausgabe: "Ungültige Eingabe"
         rechts vom Dreieck (Nein):
-            Rechteck: NOP
+            Rechteck: NOP (keine Operation)
 darunter
 Rechteck mit Line von linker oberer Ecke zur rechten Seite.
     In dem Dreieck: option
