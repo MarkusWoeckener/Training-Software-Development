@@ -10,7 +10,7 @@ Pweudocode:
 Anfang
 int zahl = 0
 Wiederhole
-    Ausgabe: "Wählen Sie Option 1 oder 2 aus: "
+    Ausgabe: "Geben Sie eine Zahl ein: "
     Eingabe: zahl
     Wenn zahl != 1 && zahl != 2
         Ausgabe: "Ungüültige Eingabe"
@@ -44,5 +44,4 @@ switch ($zahl) {
         echo "Sie haben 2 gewählt\n";
         break;
 }
-?>
 ?>
