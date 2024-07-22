@@ -28,7 +28,7 @@ Fallunterscheidung für option
         Ende Wiederhole
     option == 3:
         Wiederhole für i von 10 bis 1 Schrittweite -1
-            Wiederhole für n von 1 bis n Schrittweite 1
+            Wiederhole für n von 1 bis i Schrittweite 1
                 Ausgabe: "*"
             Ende Wiederhole
         Ausgabe: Zeilenumbruch
