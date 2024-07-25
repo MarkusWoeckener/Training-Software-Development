@@ -96,7 +96,6 @@ def daily_backup(event: FileSystemEvent):
     #Error handling, ignore PermissionError for now to easier find other Error messages
     except PermissionError:
         permission_errors += 1
-        pass
     except Exception as e:
         errors += 1
         print(f"{now.strftime('%H:%M:%S %Y-%m-%d ')} Error backing up file {event.src_path}: {e}")
@@ -131,7 +130,7 @@ def weekly_cleanup():
     for folder in os.listdir(last_week_folder):
         if folder != now.strftime("%Y-%m-%d"):
             shutil.rmtree(os.path.join(last_week_folder, folder))
-    print(f"Weekly backup cleanup completed.")
+    print("Weekly backup cleanup completed.")
 
 #Monthly backup cleanup
 def monthly_cleanup():
@@ -146,7 +145,7 @@ def monthly_cleanup():
     for folder in os.listdir(last_month_folder):
         if folder != now.strftime("%Y-%m-%d"):
             shutil.rmtree(os.path.join(last_month_folder, folder))
-    print(f"Monthly backup cleanup completed.")
+    print("Monthly backup cleanup completed.")
 
 #Main function to run the backup script
 if __name__ == "__main__":
