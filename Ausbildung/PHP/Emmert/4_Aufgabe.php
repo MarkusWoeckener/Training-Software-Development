@@ -17,11 +17,13 @@ Wiederhole
     Ende Wenn
 solange zahl != 1 && zahl != 2
 Ende Wiederhole
-Fallunterscheidung
+Fallunterscheidung für zahl
     zahl == 1
         Ausgabe: "Sie haben 1 gewählt"
+    Ende Fall 1
     zahl == 2
         Ausgabe: "Sie haben 2 gewählt"
+    Ende Fall 2
 Ende Fallunterscheidung
 Ende
 */
