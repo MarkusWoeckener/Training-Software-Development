@@ -1,8 +1,8 @@
 <?php
 /*
-Aufgabe: Der Nutzer soll eine Zahl zwischen 0 und 10 eingeben, die Eingabeaufforderung,
-bzw. Eingabe selbst wird solange wiederholt, bis die Zahl innerhalb der vorgegebenen Grenzen
-liegt.
+Aufgabe: Der Nutzer soll eine Zahl zwischen 0 und 10 eingeben,
+die Eingabeaufforderung, bzw. Eingabe selbst wird solange wiederholt,
+bis die Zahl innerhalb der vorgegebenen Grenzen liegt.
 
 Pseudocode:
 
