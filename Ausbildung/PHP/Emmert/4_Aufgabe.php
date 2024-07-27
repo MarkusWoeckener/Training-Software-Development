@@ -6,7 +6,7 @@ hingegeben richtig, erscheint entweder die Ausgabe „Sie haben 1 gewählt“ od
 entsprechend „Sie haben 2 gewählt“.
 Mit fußsteuerter Schleife.
 
-Pweudocode:
+Pseudocode:
 Anfang
 int zahl = 0
 Wiederhole
