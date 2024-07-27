@@ -29,7 +29,7 @@ public class beispiel_2 {
         int zahl = 0;
         boolean bedingung = false;
         while(!bedingung){
-            System.out.print("Geben Sie eine Zahl zwischen 1 und 10 ein: ");
+            System.out.print("Geben Sie eine Zahl zwischen 0 und 10 ein: ");
             zahl = Integer.parseInt(System.console().readLine());
             if (0 <= zahl && zahl <= 10){
                 bedingung = true;
