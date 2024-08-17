@@ -34,6 +34,9 @@ if st.button("Abschicken"):
 if st.button("Buchungen anzeigen"):
     if os.path.exists("buchungen.csv"):
         display  = pd.read_csv("buchungen.csv")
+        st.write("Buchungsübersicht")
         st.dataframe(display)
+        st.write("Summe der Buchungen")
+        st.write(display.sum(numeric_only=True))
     else:
         st.warning("Keine Buchung vorhanden")
