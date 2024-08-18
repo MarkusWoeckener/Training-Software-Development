@@ -42,7 +42,7 @@ public class ui {
             clearConsole();
             auswahl = 'n';
             System.out.println("Neue Buchung eingeben");
-            functions.neueBuchung();
+            functions.neueBuchung(scanner);
             do {
                 System.out.print("Noch eine Buchung eingeben (j/n)? ");
                 auswahl = Character.toLowerCase(scanner.nextLine().charAt(0));

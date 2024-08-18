@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.File;
 
 public class functions {
-    public static void neueBuchung(){
+    public static void neueBuchung(Scanner scanner){
         ui.clearConsole();
         System.out.println("Diese Funktion wird noch nicht implementiert!");
         /*
@@ -12,7 +12,7 @@ public class functions {
          * Eingabe von Datum, Einnahme/Ausgabe, Kategorie und Betrag
          * Speichern der Daten in einer CSV Datei
          */
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
 
         //Datum eingeben, tagesaktuelles Datum als Standardwert
         System.out.print("Datum eingeben (yyyy-mm-dd): ");
@@ -41,30 +41,25 @@ public class functions {
         //Betrag eingeben
         System.out.print("Gib den Betrag für die Buchung ein: ");
         double betrag = scanner.nextDouble();
+        scanner.nextLine();
         if (betrag > 0 && art == 'a') {
             betrag = -betrag;
         }
 
         //Daten an eine CSV Datei anhängen und speichern
-        /*
-         *ToDo:
-         *CSV Datei einlesen oder erstellen falls noch nicht vorhanden
-         *Daten anhängen
-         *CSV Datei speichern
-        */
         try (FileWriter csvWriter = new FileWriter("buchungen.csv", true)) {
             File csvFile = new File("buchungen.csv");
             if (!csvFile.exists() || csvFile.length() == 0) {
                 csvWriter.write("Datum,Art,Kategorie,Betrag\n");
             }
-            csvWriter.write(datum + "," + art + "," + kategorie + "," + betrag + "n");
-            System.out.println("Buchung erfolgreich gespeichert.");;
+            csvWriter.write(datum + "," + art + "," + kategorie + "," + betrag + "\n");
+            System.out.println("Buchung erfolgreich gespeichert.");
         }
         catch (IOException e) {
             System.out.println("Fehler beim Speichern der Buchung: " + e.getMessage());
         }
 
-        scanner.close();
+        //scanner.close();
     }
 
     public static void visualisierung(){
