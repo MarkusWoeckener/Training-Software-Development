@@ -56,6 +56,7 @@ public class ui {
             } while (auswahl != 'j' && auswahl != 'n');
         } while (auswahl == 'j');
         scanner.close();
+        return;
     }
 
     public static void ausgabeBuchungen(){
@@ -66,6 +67,9 @@ public class ui {
     }
 
     public static void clearConsole() {
+        /**
+         * Clears the console
+         */
         System.out.print("\033[H\033[2J");
         System.out.flush(); // Ensure the output is immediately sent to the console
     }
