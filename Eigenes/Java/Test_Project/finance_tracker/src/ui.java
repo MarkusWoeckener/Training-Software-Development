@@ -24,11 +24,11 @@ public class ui {
             switch(auswahl){
                 case 1:
                     // Neue Buchung eingeben
-                    eingabeNeueBuchung();
+                    eingabeNeueBuchung(scanner);
                     break;
                 case 2:
                     // Buchungen anzeigen
-                    ausgabeBuchungen();
+                    ausgabeBuchungen(scanner);
                     break;
                 case 3:
                     // Beenden
@@ -42,9 +42,9 @@ public class ui {
         scanner.close();
     }
 
-    public static void eingabeNeueBuchung(){
+    public static void eingabeNeueBuchung(Scanner scanner){
         char auswahl;
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
         do {
             clearConsole();
             auswahl = 'n';
@@ -55,15 +55,28 @@ public class ui {
                 auswahl = Character.toLowerCase(scanner.nextLine().charAt(0));
             } while (auswahl != 'j' && auswahl != 'n');
         } while (auswahl == 'j');
-        scanner.close();
+        //scanner.close();
+        if (auswahl == 'n') {
+            mainMenu();
+        }
         return;
     }
 
-    public static void ausgabeBuchungen(){
-        //to be implemented
+    public static void ausgabeBuchungen(Scanner scanner){
+        char auswahl;
+
         clearConsole();
         System.out.println("Buchungen anzeigen");
         functions.visualisierung();
+        do {
+            System.out.print("\nZum [H]auptmenü oder [B]eenden: ");
+            auswahl = Character.toLowerCase(scanner.nextLine().charAt(0));
+        } while (auswahl != 'h' && auswahl != 'b');
+        if (auswahl == 'h') {
+            mainMenu();
+        }
+        return;
+
     }
 
     public static void clearConsole() {
