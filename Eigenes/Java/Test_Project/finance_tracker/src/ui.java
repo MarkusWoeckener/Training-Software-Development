@@ -68,6 +68,7 @@ public class ui {
         clearConsole();
         System.out.println("Buchungen anzeigen");
         functions.visualisierung();
+        functions.summeBuchungen();
         do {
             System.out.print("\nZum [H]auptmenü oder [B]eenden: ");
             auswahl = Character.toLowerCase(scanner.nextLine().charAt(0));

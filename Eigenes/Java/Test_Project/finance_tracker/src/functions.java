@@ -60,6 +60,27 @@ public class functions {
         }
     }
 
+    public static void summeBuchungen() {
+        String csvFile = "buchungen.csv";
+        String line;
+        String split = ",";
+        float summe = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            //Header überspringen
+            br.readLine();
+
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(split);
+                summe += Float.parseFloat(data[3]);
+            }
+        } 
+        catch (IOException e) {
+            System.out.println("Fehler beim Lesen der Datei: " + e.getMessage());
+        }
+        System.out.printf("\nSumme der Buchungen: %.2f €\n", summe);
+    }
+
     public static void visualisierung(){
         String csvFile = "buchungen.csv";
         String line;
