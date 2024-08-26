@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class functions {
     public static void neueBuchung(Scanner scanner){
-        ui.clearConsole();
+        ui.clearConsole(); //Konsole löschen
         
         //Datum eingeben, tagesaktuelles Datum als Standardwert
         System.out.print("Datum eingeben (yyyy-mm-dd): ");

@@ -44,7 +44,6 @@ public class ui {
 
     public static void eingabeNeueBuchung(Scanner scanner){
         char auswahl;
-        //Scanner scanner = new Scanner(System.in);
         do {
             clearConsole();
             auswahl = 'n';
@@ -55,7 +54,6 @@ public class ui {
                 auswahl = Character.toLowerCase(scanner.nextLine().charAt(0));
             } while (auswahl != 'j' && auswahl != 'n');
         } while (auswahl == 'j');
-        //scanner.close();
         if (auswahl == 'n') {
             mainMenu();
         }
@@ -63,9 +61,14 @@ public class ui {
     }
 
     public static void ausgabeBuchungen(Scanner scanner){
-        char auswahl;
+        /**
+         * Gibt die gespeicherten Buchungen und die Summe der
+         * Buchungen aus.
+        */
 
-        clearConsole();
+        char auswahl; //Variable für das Untermenü
+
+        clearConsole(); //Konsole löschen
         System.out.println("Buchungen anzeigen");
         functions.visualisierung();
         functions.summeBuchungen();
@@ -82,10 +85,10 @@ public class ui {
 
     public static void clearConsole() {
         /**
-         * Clears the console
+         * Lösche die Konsole
          */
         System.out.print("\033[H\033[2J");
-        System.out.flush(); // Ensure the output is immediately sent to the console
+        System.out.flush(); //Ausgabe sofort an die Konsole schicken
     }
     
 }
