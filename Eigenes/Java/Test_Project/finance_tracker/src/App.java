@@ -1,6 +1,5 @@
 public class App {
-    public static void main(String[] args) throws Exception {
-        ui.main
-        Menu();
+    public static void main(String[] args) {
+        ui.mainMenu();
     }
 }
