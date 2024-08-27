@@ -4,6 +4,7 @@
 	Datum: 27.08.2024
 	Dateiname: GeometrieRechteck2.java
 */
+
 import java.io.*;
 
 public class GeometrieRechteck2 {
