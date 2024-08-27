@@ -28,7 +28,7 @@ public class Geometrie {
 		if(auswahl == 1) {
 			rechteckGeometrie(tastatur);
 		}
-		if(auswahl == 2) {
+		else if(auswahl == 2) {
 			kreisGeometrie(tastatur);
 		}
 		else {
