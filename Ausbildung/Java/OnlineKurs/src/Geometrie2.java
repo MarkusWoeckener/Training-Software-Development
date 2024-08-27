@@ -2,12 +2,12 @@
 	Name: Markus Woeckener
 	Kontakt: WoeckenerM@bfwmail.de
 	Datum: 27.08.2024
-	Dateiname: Geometrie.java
+	Dateiname: Geometrie2.java
 */
 
 import java.io.*;
 
-public class Geometrie {
+public class Geometrie2 {
 	public static void main(String[] args) throws Exception {
 		//Buffered Reader Instanz erstellen
 		BufferedReader tastatur = new BufferedReader(new InputStreamReader(System.in));
@@ -16,24 +16,30 @@ public class Geometrie {
 		String eingabe;
 		int auswahl;
 		
-		//Auswahlmenü
-		System.out.println("Wähle aus was berechnet werden soll:");
-		System.out.println("1: Rechteck");
-		System.out.println("2: Kreis");
-		System.out.print("Auswahl: ");
-		
-		//Benutzereingabe
-		eingabe = tastatur.readLine(); //Eingabe einlesen
-		auswahl = Integer.parseInt(eingabe); //Eingabe als Integer parsen
-		
-		if(auswahl == 1) {
-			rechteckGeometrie(tastatur); //Der BufferedReader wird als Argument an die aufgerufene methode weitergegeben.
-		}
-		else if(auswahl == 2) {
-			kreisGeometrie(tastatur);
-		}
-		else {
-			System.out.println("Ungülitge Eingabe!");
+		while(true) {
+			//Auswahlmenü
+			System.out.println("Wähle aus was berechnet werden soll:");
+			System.out.println("1: Rechteck");
+			System.out.println("2: Kreis");
+			System.out.println("0: Beenden");
+			System.out.print("Auswahl: ");
+			
+			//Benutzereingabe
+			eingabe = tastatur.readLine(); //Eingabe einlesen
+			auswahl = Integer.parseInt(eingabe); //Eingabe als Integer parsen
+			
+			if(auswahl == 1) {
+				rechteckGeometrie(tastatur); //Der BufferedReader wird als Argument an die aufgerufene methode weitergegeben.
+			}
+			else if(auswahl == 2) {
+				kreisGeometrie(tastatur);
+			}
+			else if(auswahl == 0) {
+				break;
+			}
+			else {
+				System.out.println("Ungülitge Eingabe!");
+			}
 		}
 	}
 	
