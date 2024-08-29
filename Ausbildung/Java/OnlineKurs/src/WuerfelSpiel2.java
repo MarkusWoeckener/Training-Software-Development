@@ -12,7 +12,7 @@ public class WuerfelSpiel2 {
 			for (int i = 1; i <= 10; ++i) {
 				wuerfel = wuerfeln(); //Zufallszahl für den aktuellen Wurf erzeugen
 				
-				eingabe = getEingabe(); //Benutzereingabe holen
+				eingabe = getEingabe(i); //Benutzereingabe holen
 				
 				checkEingabe(eingabe, wuerfel); //Prüfen ob richtig geraten
 			}
@@ -35,7 +35,7 @@ public class WuerfelSpiel2 {
 		return (int) Math.round(5 * Math.random() + 1);
 	}
 
-     static int getEingabe() {
+     static int getEingabe(int i) {
      		//Eingabeaufforderung
      		int eingabe;
      		
