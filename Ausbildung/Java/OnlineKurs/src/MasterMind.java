@@ -68,7 +68,7 @@ public class MasterMind {
         return guess;
     }
 
-    static Boolean checkGuess(int[] code, int[] guess, int n) {
+    static Boolean checkGuess(int[] code, int[] guess, int n) throws Exception{
         //Zählvariablen für richtige Ziffer und richtige Ziffer an richtiger Position
         int correctNumber = 0;
         int correctPosition = 0;
@@ -83,6 +83,7 @@ public class MasterMind {
                     //Wenn Ziffer und Stelle übereinstimmen, entsprechenden Zähler inkrementieren
                     if (i == j) {
                         ++correctPosition;
+                        continue;
                     }
                     //Wenn nur die Ziffer vorhanden ist, den anderen Zähler inkrementieren
                     else {

@@ -35,7 +35,7 @@ public class WuerfelSpiel2 {
 		return (int) Math.round(5 * Math.random() + 1);
 	}
 
-     static int getEingabe(int i) {
+     static int getEingabe(int i) throws Exception {
      		//Eingabeaufforderung
      		int eingabe;
      		

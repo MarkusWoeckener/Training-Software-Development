@@ -62,7 +62,7 @@ public class Geometrie3 {
 
 	static void kreisGeometrie() throws Exception {
 		//Variablen deklarieren
-        double r, pi, flaeche, umfang;
+        double r, flaeche, umfang;
         
         //Eingabe des Radius
         System.out.println("Bitte den Radius des Kreises eingeben:");
