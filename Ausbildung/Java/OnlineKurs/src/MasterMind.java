@@ -76,9 +76,13 @@ public class MasterMind {
 
         Boolean geraten = false; //Code geraten J/N
 
+        //Zählen und speichern welche Ziffer wie oft im generierten Code vorkommt
         for (int i = 0; i < code.length; ++i) {
             if (numberCount[code[i]] == 0) {
                 ++numberCount[code[i]];
+            }
+            else {
+                numberCount[code[i]] = 0;
             }
         }
 
