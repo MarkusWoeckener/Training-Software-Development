@@ -12,7 +12,7 @@ public class MasterMind {
         //code erzeugen
         code = createCode();
         //Ausgabe zu Testzwecken, bei Bedarf
-        printArray(code);
+        //printArray(code);
 
         System.out.println("Ich habe einen vierstelligen Code aus Ziffern zwischen 0 und 9 erstellt.");
         System.out.println("Du hast " + numberOfAttempts + " Versuche den Code zu raten.");
@@ -72,9 +72,15 @@ public class MasterMind {
         //Zählvariablen für richtige Ziffer und richtige Ziffer an richtiger Position
         int correctNumber = 0;
         int correctPosition = 0;
+        int[] numberCount = new int[10];
 
         Boolean geraten = false; //Code geraten J/N
 
+        for (int i = 0; i < code.length; ++i) {
+            if (numberCount[code[i]] == 0) {
+                ++numberCount[code[i]];
+            }
+        }
 
         //Für jede Stelle des generierten Codes prüfen ob eine Stelle der Eingabe gleich ist.
         for (int i = 0; i < code.length; ++i) {
@@ -83,11 +89,12 @@ public class MasterMind {
                     //Wenn Ziffer und Stelle übereinstimmen, entsprechenden Zähler inkrementieren
                     if (i == j) {
                         ++correctPosition;
-                        continue;
+                        --numberCount[code[i]];
                     }
                     //Wenn nur die Ziffer vorhanden ist, den anderen Zähler inkrementieren
-                    else {
+                    else if (numberCount[code[i]] > 0) {
                         ++correctNumber;
+                        --numberCount[code[i]];
                     }
                 }
             }
