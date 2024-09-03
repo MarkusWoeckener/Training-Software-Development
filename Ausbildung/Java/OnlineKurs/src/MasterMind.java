@@ -2,69 +2,83 @@ import java.io.*;
 
 public class MasterMind {
     public static void main(String[] args) throws Exception{
+        //Variablendeklaration
+        //Grundlegende Variablen für die Schwierigkeit des Spiels
+        int codeLaenge = 4; //Länge des generierten Codes
+        int numberOfAttempts = 40; //Anzahl der zur Verfügung stehenden Versuche
+
         //Arrays instanziieren
-        int[] code = new int[4];
-        int[] guess = new int[4];
+        int[] code = new int[codeLaenge];
+        int[] guess = new int[codeLaenge];
 
-        //Anzahl der zur Verfügung stehenden Versuche
-        int numberOfAttempts = 20;
+        char nochmal; //entscheidet ob nochmal gespielt wird
 
-        //code erzeugen
-        code = createCode();
-        //Ausgabe zu Testzwecken, bei Bedarf
-        //printArray(code);
-
-        System.out.println("Ich habe einen vierstelligen Code aus Ziffern zwischen 0 und 9 erstellt.");
-        System.out.println("Du hast " + numberOfAttempts + " Versuche den Code zu raten.");
-        
-        //Spielschleife
-        for (int i = 0; i < numberOfAttempts; ++i) {
-            //Benutzereingabe holen
-            guess = getGuess(i + 1);
-            //Optionale Debugging Ausgaben der Arrays
+        //Spielmethoden aufrufen
+        while (true) {
+            //code erzeugen
+            code = createCode(codeLaenge);
+            //Ausgabe zu Testzwecken, bei Bedarf
             //printArray(code);
-            //printArray(guess);
 
-            //Eingabe und generierten Code vergleichen
-            if (checkGuess(code, guess, i + 1)) {
+            //Kurze Anleitung ausgeben
+            System.out.println("\nIch habe einen " + codeLaenge + "-stelligen Code aus Ziffern zwischen 0 und 9 erstellt.");
+            System.out.println("Du hast " + numberOfAttempts + " Versuche den Code zu raten.");
+            
+            //Spielschleife
+            for (int i = 0; i < numberOfAttempts; ++i) {
+                //Benutzereingabe holen
+                guess = getGuess(i + 1, codeLaenge);
+                //Optionale Debugging Ausgaben der Arrays
+                //printArray(code);
+                //printArray(guess);
+
+                //Eingabe und generierten Code vergleichen
+                if (checkGuess(code, guess, i + 1)) {
+                    break; //Wenn der Code geraten wurde Schleife beenden
+                }
+            }
+            System.out.print("Nochmal spielen (J/N)? ");
+            nochmal = getChar();
+            if (nochmal == 'n') {
                 break;
             }
         }
     }
 
-    static int[] createCode() {
-        int[] code = new int[4];
+    static int[] createCode(int codeLaenge) {
+        //Array für den generierten Code instanziieren
+        int[] code = new int[codeLaenge];
 
         //Jedes Element des Arrays mit einer Zufallszahl zwischen 0 und 9 füllen
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 0; i < codeLaenge; ++i) {
             code[i] = (int) Math.round(9 * Math.random());
         }
         return code;
     }
 
-    static int[] getGuess(int n) throws Exception{
+    static int[] getGuess(int n, int codeLaenge) throws Exception{
         //Buffered Reader Instanz erstellen
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         //Variablen deklarieren
-        int[] guess = new int[4];
+        int[] guess = new int[codeLaenge];
         String input;
 
         //Eingabe vom Behutzer holen und sicherstellen dass der Code vierstellig ist
         do {
             System.out.print(n + ". Versuch: ");
             input = br.readLine();
-            if (input.length() != 4) {
-                System.out.println("Der Code muss vierstellig sein!");
+            if (input.length() != codeLaenge) {
+                System.out.println("Der Code muss " + codeLaenge + "-stellig sein!");
             }
         }
-        while (input.length() != 4);
+        while (input.length() != codeLaenge);
 
         //String in Array umwandeln
         for (int i = 0; i < guess.length; ++i) {
             guess[i] = Integer.parseInt(String.valueOf(input.charAt(i)));
         }
-        //Eingabe als Array zurückgeben
+        //Benutzereingabe als Array zurückgeben
         return guess;
     }
 
@@ -85,6 +99,7 @@ public class MasterMind {
                 numberCount[code[i]] = 0;
             }
         }
+        //printArray(numberCount); //Debugging Ausgabe
 
         //Für jede Stelle des generierten Codes prüfen ob eine Stelle der Eingabe gleich ist.
         for (int i = 0; i < code.length; ++i) {
@@ -95,7 +110,7 @@ public class MasterMind {
                         ++correctPosition;
                         --numberCount[code[i]];
                     }
-                    //Wenn nur die Ziffer vorhanden ist, den anderen Zähler inkrementieren
+                    //Wenn nur die Ziffer übereinstimmt, den anderen Zähler inkrementieren
                     else if (numberCount[code[i]] > 0) {
                         ++correctNumber;
                         --numberCount[code[i]];
@@ -103,15 +118,16 @@ public class MasterMind {
                 }
             }
         }
+        //Ausgabe der Ergebnisse der Prüfung
         System.out.println("Richtige Ziffern an falscher Position: " + correctNumber);
         System.out.println("Richtige Ziffern an der richtigen Position: " + correctPosition +"\n");
         
         //Prüfen ob alle Stellen richtig geraten wurden
         if (correctPosition == code.length) {
-            System.out.println("Code in " + n + " Versuchengeraten, Herzlichen Glückwunsch!");
+            System.out.println("Code in " + n + " Versuchen geraten, Herzlichen Glückwunsch!\n");
             geraten = true;
         }
-        return geraten;
+        return geraten; //Zurückgeben, dass der Code geraten wurde
     }
 
     static void printArray(int[] array) {
@@ -121,4 +137,11 @@ public class MasterMind {
         }
         System.out.println();
     }
+
+    static char getChar() throws Exception {
+		//Gibt den ersten Character der Eingabe in lowercase zurück
+		BufferedReader tastatur = new BufferedReader(new InputStreamReader(System.in));
+
+		return Character.toLowerCase(tastatur.readLine().charAt(0));
+	}
 }
