@@ -101,23 +101,24 @@ public class MasterMind {
         }
         //printArray(numberCount); //Debugging Ausgabe
 
-        //Für jede Stelle des generierten Codes prüfen ob eine Stelle der Eingabe gleich ist.
+        //Prüfen ob richtige Ziffer an richtiger Stelle geraten wurde
+        for (int i = 0; i < code.length; ++i) {
+            if (code[i] == guess[i]) {
+                ++correctPosition;
+                --numberCount[code[i]];
+            }
+        }
+
+        //Prüfen ob richtige Ziffer an falscher Stelle geraten wurde
         for (int i = 0; i < code.length; ++i) {
             for (int j = 0; j< code.length; ++j) {
-                if (code[i] == guess[j]) {
-                    //Wenn Ziffer und Stelle übereinstimmen, entsprechenden Zähler inkrementieren
-                    if (i == j) {
-                        ++correctPosition;
-                        --numberCount[code[i]];
-                    }
-                    //Wenn nur die Ziffer übereinstimmt, den anderen Zähler inkrementieren
-                    else if (numberCount[code[i]] > 0) {
-                        ++correctNumber;
-                        --numberCount[code[i]];
-                    }
+                if (code[i] == guess[j] && numberCount[code[i]] > 0) {
+                    ++correctNumber;
+                    --numberCount[code[i]];
                 }
             }
         }
+
         //Ausgabe der Ergebnisse der Prüfung
         System.out.println("Richtige Ziffern an falscher Position: " + correctNumber);
         System.out.println("Richtige Ziffern an der richtigen Position: " + correctPosition +"\n");
