@@ -92,29 +92,25 @@ public class MasterMind {
 
         //Zählen und speichern welche Ziffer wie oft im generierten Code vorkommt
         for (int i = 0; i < code.length; ++i) {
-            if (numberCount[code[i]] == 0) {
-                ++numberCount[code[i]];
-            }
-            else {
-                numberCount[code[i]] = 0;
-            }
+            ++numberCount[code[i]];
         }
-        //printArray(numberCount); //Debugging Ausgabe
+        //Debugging Ausgabe
+        printArray(numberCount);
 
         //Prüfen ob richtige Ziffer an richtiger Stelle geraten wurde
         for (int i = 0; i < code.length; ++i) {
-            if (code[i] == guess[i]) {
-                ++correctPosition;
-                --numberCount[code[i]];
+            if (code[i] == guess[i]) { //Für jede Stelle des Codes prüfen ob die Eingabe an dieser Stelle übereinstimmt
+                ++correctPosition; //Zähler inkrementieren
+                --numberCount[code[i]]; //Anzahl dieser Ziffer im Zähl-Array um 1 verringern
             }
         }
 
         //Prüfen ob richtige Ziffer an falscher Stelle geraten wurde
-        for (int i = 0; i < code.length; ++i) {
-            for (int j = 0; j< code.length; ++j) {
-                if (code[i] == guess[j] && numberCount[code[i]] > 0) {
-                    ++correctNumber;
-                    --numberCount[code[i]];
+        for (int i = 0; i < code.length; ++i) { //Für jede Stelle des Codes
+            for (int j = 0; j< code.length; ++j) {  //Jede Stelle der Eingabe durchgehen
+                if (code[i] == guess[j] && numberCount[code[i]] > 0) { //Wenn es eine Übereinstimmung gibt und die Anzahl dieser Ziffer im Zähl-Array größer als 0 ist
+                    ++correctNumber; //Zähler inkrementieren
+                    --numberCount[code[i]]; //Anzahl dieser Ziffer im Zähl-Array um 1 verringern
                 }
             }
         }
