@@ -107,6 +107,7 @@ Anfang
 int[] zahlen
 int zahl, temp
 int n = 0
+bool sortiert
 
 Solange Wahr wiederhole
 
@@ -115,7 +116,23 @@ wiederhole
   Eingabe zahl
   Wenn zahl != 0 dann
     zahlen[n] = zahl
-    i++
+    n++
   Ende Wenn
 Solange zahl != 0
 Ende Wiederhole
+Wiederhole
+  sortiert = true
+  Für int j = 0 bis zahlen.lenght -2 (Schrittweite 1) wiederhole
+    Wenn zahlen[j] > zahlen[j+1] dann
+      temp = zahlen[j]
+      zahlen[j] = zahlen[j+1]
+      zahlen[j+1] = temp
+      sortiert = false
+    Ende Wenn
+  Ende Wiederhole
+Solange sortiert = false
+Ende Wiederhole
+Für int i = 0 bis i < zahlen.length (Schrittweite 1) wiederhole
+  Ausgabe: zahlen[i]
+Ende Wiederhole
+Ende
