@@ -45,7 +45,7 @@ int[] zahlen
 int zahl
 int n = 0
 
-Wwiederhole
+Wiederhole
   Ausgabe: "Gib eine Ganzzahl ein: "
   Eingabe zahl
   Wenn zahl != 0 dann
@@ -76,7 +76,7 @@ int zahl
 int summe
 int n = 0
 
-wiederhole
+Wiederhole
   Ausgabe: "Gib eine Ganzzahl ein: "
   Eingabe zahl
   Wenn zahl != 0 dann
@@ -102,16 +102,14 @@ Ende
 Erstellen Sie einen Programmablaufplan, ein Struktogramm oder den Pseudocode für folgendes Programm: Es wird die Eingabe von ganzen Zahlen erwartet. Sobald eine 0 eingegeben wird, ist die Eingabe beendet. Daraufhin werden die Zahlen aufsteigend sortiert und am Bildschirm ausgegeben. Danach ist das Programm beendet.
 
 Pseodocode:
-
+```
 Anfang
 int[] zahlen
 int zahl, temp
 int n = 0
-bool sortiert
+boolean sortiert
 
-Solange Wahr wiederhole
-
-wiederhole
+Wiederhole
   Ausgabe: "Geben Sie eine Ganzzahl ein: "
   Eingabe zahl
   Wenn zahl != 0 dann
@@ -130,9 +128,9 @@ Wiederhole
       sortiert = false
     Ende Wenn
   Ende Wiederhole
-Solange sortiert = false
+Solange sortiert == false
 Ende Wiederhole
 Für int i = 0 bis i < zahlen.length (Schrittweite 1) wiederhole
   Ausgabe: zahlen[i]
-Ende Wiederhole
+Ende vWiederhole
 Ende
