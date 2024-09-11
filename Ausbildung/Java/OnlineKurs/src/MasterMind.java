@@ -95,7 +95,7 @@ public class MasterMind {
             ++numberCount[code[i]];
         }
         //Debugging Ausgabe
-        printArray(numberCount);
+        //printArray(numberCount);
 
         //Prüfen ob richtige Ziffer an richtiger Stelle geraten wurde
         for (int i = 0; i < code.length; ++i) {
