@@ -4,16 +4,21 @@ Anfang
 int[] kombination = {1, 7, 11}
 int[3] eingabe = new int[3]
 int zahl
-Boolean gleich = false
+Boolean gleich = true
 
 Für int i = 0 bis i < kombination.length, Schrittweite 1, wiederhole
     Ausgabe: "Geben Sie eine Zahl der Kombination ein: "
     Eingabe: zahl
     eingabe[i] = zahl
-    Wenn eingabe[i] == kombination[i]
-        gleich = true
+Ende Wiederhole
+
+Für int j = 0 bis j < kombination.length, Schrittweite 1, wiederhole
+    Wenn eingabe[j] != kombination[j], dann
+        gleich = false
+        Beende Schleife
     Ende Wenn
 Ende Wiederhole
+
 Wenn gleich == true, dann
     Ausgabe: "Richtige Kombination"
 Sonst
