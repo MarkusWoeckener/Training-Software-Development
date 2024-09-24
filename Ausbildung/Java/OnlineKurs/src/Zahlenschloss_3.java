@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class Zahlenschloss_2 {
+public class Zahlenschloss_3 {
     public static void main(String[] args) throws Exception{
         int[] kombination = {1, 7, 11};
         Boolean nochmal;
