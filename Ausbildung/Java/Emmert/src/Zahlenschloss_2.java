@@ -3,7 +3,7 @@ import java.io.*;
 public class Zahlenschloss_2 {
     public static void main(String[] args) throws Exception{
         int[] kombination = {1, 7, 11};
-        Boolean nochmal;
+        boolean nochmal;
         
         do {
             if (schloss(kombination)) {
@@ -14,9 +14,9 @@ public class Zahlenschloss_2 {
         while (nochmal);
     }
     
-    private static Boolean schloss(int[] kombination) throws Exception {
+    private static boolean schloss(int[] kombination) throws Exception {
         int zahl;
-        Boolean gleich = true;
+        boolean gleich = true;
         //Für jede Stelle der Kombination eine Eingabe des Benutzers anfordern
         //und prüfen. Ggf. Flag für falsche Eingabe setzen
         for (int i = 0; i < kombination.length; i++) {
@@ -38,7 +38,7 @@ public class Zahlenschloss_2 {
         return gleich;
     }
 
-    static Boolean wiederholen() throws Exception {
+    static boolean wiederholen() throws Exception {
         char eingabe;
         System.out.print("Noch ein Versuch (j/n)");
         eingabe = getChar();

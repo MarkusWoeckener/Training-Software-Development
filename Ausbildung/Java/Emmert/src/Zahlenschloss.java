@@ -5,7 +5,7 @@ public class Zahlenschloss {
         int[] kombination = {1, 7, 11};
         int[] eingabe = new int[kombination.length];
         int zahl;
-        Boolean gleich = true;
+        boolean gleich = true;
 
         //Für jede Stelle der Kombination eine Eingabe des Benutzers anfordern
         //Eingaben in einem Array speichern

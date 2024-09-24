@@ -12,9 +12,9 @@ public class Zahlenschloss_3 {
         }
     }
     
-    private static Boolean schloss(int[] kombination) throws Exception {
+    private static boolean schloss(int[] kombination) throws Exception {
         int zahl;
-        Boolean gleich = true;
+        boolean gleich = true;
 
         //Für jede Stelle der Kombination eine Eingabe des Benutzers anfordern
         //und prüfen. Ggf. Flag für falsche Eingabe setzen
