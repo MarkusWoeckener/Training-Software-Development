@@ -2,9 +2,10 @@ import java.io.*;
 
 public class Zahlenschloss_3 {
     public static void main(String[] args) throws Exception{
-        int[] kombination = {1, 7, 11};
+        int[] kombination = {1, 7, 11}; //Gesuchte Kombination
+        int versuche = 3; //Anzahl der erlaubten Versuche
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < versuche; i++) {
             if (schloss(kombination)) {
                 break;
             }
@@ -14,6 +15,7 @@ public class Zahlenschloss_3 {
     private static Boolean schloss(int[] kombination) throws Exception {
         int zahl;
         Boolean gleich = true;
+
         //Für jede Stelle der Kombination eine Eingabe des Benutzers anfordern
         //und prüfen. Ggf. Flag für falsche Eingabe setzen
         for (int i = 0; i < kombination.length; i++) {
@@ -32,11 +34,11 @@ public class Zahlenschloss_3 {
             System.out.println("Falsche Kombination");
         }
 
-        return gleich;
+        return gleich; //Flag zurückgeben, ob richtige Kombination
     }
 
     static int getInt() throws Exception {
-		//Gibt ein Integer zurüäck
+		//Gibt ein Integer zurück
 		BufferedReader tastatur = new BufferedReader(new InputStreamReader(System.in));
 		
 		return Integer.parseInt(tastatur.readLine());
