@@ -2,7 +2,7 @@
 ```
 Anfang
 int[] kombination = {1, 7, 11}
-int[3] eingabe = new int[3]
+int[] eingabe = new int[kombination.length]
 int zahl
 Boolean gleich = true
 

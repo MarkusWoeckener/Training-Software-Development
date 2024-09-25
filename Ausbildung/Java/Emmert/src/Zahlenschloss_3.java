@@ -7,9 +7,14 @@ public class Zahlenschloss_3 {
 
         for (int i = 0; i < versuche; i++) {
             if (schloss(kombination)) {
+                System.out.println("Richtige Kombination");
                 break;
             }
+            else {
+                System.out.println("Falsche Kombination");
+            }
         }
+
     }
     
     private static boolean schloss(int[] kombination) throws Exception {
@@ -25,15 +30,6 @@ public class Zahlenschloss_3 {
                 gleich = false;
             }
         }
-        
-        //Ausgabe des Ergebnisses nachdam alle Stellen eingegben wurden
-        if (gleich) {
-            System.out.println("Richtige Kombination");
-        }
-        else {
-            System.out.println("Falsche Kombination");
-        }
-
         return gleich; //Flag zurückgeben, ob richtige Kombination
     }
 

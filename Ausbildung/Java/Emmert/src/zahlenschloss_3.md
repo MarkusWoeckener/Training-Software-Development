@@ -2,24 +2,21 @@
 ## alle Zusatzaufgaben
 ```
 Anfang
-main Methode
+Methode main
     int[] kombination = {1, 7, 11}
     int versuche = 3
 
-    Für int i = 0 bis i < kombination, Schrittweite 1, wiederhole
+    Für int i = 0 bis i < versuche, Schrittweite 1, wiederhole
         Wenn Rückgabewert von schloss(kombination) == wahr, dann
+            Ausgabe: "Korrekt"
             Unterbreche Schleife
+        Sonst
+            Ausgabe: "Falsche Kombination"
         Ende Wenn
     Ende Wiederhole
-
-    Wenn Rückgabewert von schloss(kombination) == wahr, dann
-        Ausgabe: "Korrekt"
-    Sonst
-        Ausgabe: "Falsche Kombination"
-    Ende Wenn
 Ende Methode
 
-Methode schloss, Rückgabewert boolean
+Methode schloss, Parameter (int [] kombination), Rückgabewert boolean
     int zahl
     boolean gleich = true
 
