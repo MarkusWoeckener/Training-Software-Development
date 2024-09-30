@@ -14,17 +14,10 @@ Für int i = 0 bis i < kombination.length, Schrittweite 1, wiederhole
     Ende Wenn
 Ende Wiederhole
 
-Für int j = 0 bis j < kombination.length, Schrittweite 1, wiederhole
-    Wenn eingabe[j] != kombination[j], dann
-        gleich = false
-        Beende Schleife
-    Ende Wenn
-Ende Wiederhole
-
 Wenn gleich == true, dann
     Ausgabe: "Richtige Kombination"
 Sonst
-    Ausgabe: "FAlsche Kombination"
+    Ausgabe: "Falsche Kombination"
 Ende Wenn
 Ende
 ```

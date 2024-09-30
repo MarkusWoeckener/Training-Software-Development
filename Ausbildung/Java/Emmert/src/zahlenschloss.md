@@ -22,7 +22,7 @@ Ende Wiederhole
 Wenn gleich == true, dann
     Ausgabe: "Richtige Kombination"
 Sonst
-    Ausgabe: "FAlsche Kombination"
+    Ausgabe: "Falsche Kombination"
 Ende Wenn
 Ende
 ```

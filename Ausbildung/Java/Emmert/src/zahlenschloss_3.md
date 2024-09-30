@@ -16,7 +16,7 @@ Methode main
     Ende Wiederhole
 Ende Methode
 
-Methode schloss, Parameter (int [] kombination), Rückgabewert boolean
+Methode schloss, Rückgabewert boolean, Parameter (int [] kombination)
     int zahl
     boolean gleich = true
 
