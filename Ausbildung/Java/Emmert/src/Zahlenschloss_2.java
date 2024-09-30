@@ -6,15 +6,15 @@ public class Zahlenschloss_2 {
         boolean nochmal;
         
         do {
-            if (schloss(kombination)) {
-                break;
+            if (schloss(kombination)) { //Wenn richtige Kombination
+                break; //Schleife unterbrechen
             }
-            nochmal = wiederholen();
+            nochmal = wiederholen(); //Soll wiederholt werden?
         }
         while (nochmal);
     }
     
-    private static boolean schloss(int[] kombination) throws Exception {
+    static boolean schloss(int[] kombination) throws Exception {
         int zahl;
         boolean gleich = true;
         //Für jede Stelle der Kombination eine Eingabe des Benutzers anfordern
