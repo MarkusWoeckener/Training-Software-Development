@@ -6,20 +6,18 @@
  
 ### Verzweigung:
 ```
-Anfang
 Wenn Bedingung,
 Dann
     Anweisung
 Sonst
     Anweisung
 Ende Wenn
-Ende
 ```
 
 ### Fallunterscheidung
 Verbalisierung PAP:
 ```
-Raute mit Bedingung
+Raute mit zu prüfender Bedingung
 Aus der unteren Ecke verzweigter Progammfortsetzungspfeil zu den möglichen Fällen.
 Darunter in einer Zeile Rechtecke mit den möglichen Fallen.
 Darunter die entsprechenden Anweisungen für jeden Fall.
