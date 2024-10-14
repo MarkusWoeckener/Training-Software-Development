@@ -1,13 +1,30 @@
 import java.io.*;
-
+/**
+ * @author Markus Woeckener
+ */
 public class Quersumme {
     public static void main(String[] args) throws Exception{
-        //Variablendeklaration
-        int zahl, quersumme;
-        
+        aufgabeA();
+        aufgabeB();
+    }
+
+    private static void aufgabeA() throws Exception {
+        int zahl;
+        int quersumme;
         zahl = eingabeZahl();
         quersumme = berechneQuersumme(zahl);
         ausgabeQuersumme(quersumme);
+    }
+
+    static void aufgabeB() {
+        /**Gibt alle Zahlen zwischen 1 und 1000 aus, deren Quersumme 15 ist
+         */
+        System.out.println("Die Zahlen zwischen 1 und 1000, deren Quersumme 15 ist:");
+        for (int i = 1; i <= 1000; i++) {
+            if (berechneQuersumme(i) == 15) {
+                System.out.println(i);
+            }
+        }
     }
 
     static int eingabeZahl() throws Exception{
@@ -36,7 +53,7 @@ public class Quersumme {
         }
         return quersumme;
     }
-
+    
     static void ausgabeQuersumme(int quersumme) {
         System.out.println("Die Quersumme ist: " + quersumme);
     }
