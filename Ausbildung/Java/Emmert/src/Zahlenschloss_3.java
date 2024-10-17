@@ -35,8 +35,8 @@ public class Zahlenschloss_3 {
 
     static int getInt() throws Exception {
 		//Gibt ein Integer zurück
-		BufferedReader tastatur = new BufferedReader(new InputStreamReader(System.in));
-		
-		return Integer.parseInt(tastatur.readLine());
-	}
+        BufferedReader tastatur = new BufferedReader(new InputStreamReader(System.in));
+        
+        return Integer.parseInt(tastatur.readLine());
+    }
 }
