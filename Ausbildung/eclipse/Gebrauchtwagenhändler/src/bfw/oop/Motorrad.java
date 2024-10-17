@@ -4,9 +4,9 @@ public class Motorrad extends Fahrzeuge{
 	private int hubraum;
 	
 	//Konstruktor
-	public Motorrad(double wert1, String wert2, int wert3, int wert4, int wert5) {
-		super(wert1, wert2, wert3, wert4);
-		this.hubraum = wert5;
+	public Motorrad(double prs, String mdl, int bj, int km, int ccm) {
+		super(prs, mdl, bj, km);
+		this.hubraum = ccm;
 	}
 	
 	//Getter Methode

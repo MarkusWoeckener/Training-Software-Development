@@ -6,9 +6,11 @@ public class Quersumme {
     public static void main(String[] args) throws Exception{
         aufgabeA();
         aufgabeB();
+        aufgabeC();
     }
 
-    private static void aufgabeA() throws Exception {
+    static void aufgabeA() throws Exception {
+        /**Berechnet die Quersumme der eingegebneen Zahl */
         int zahl;
         int quersumme;
         zahl = eingabeZahl();
@@ -17,11 +19,21 @@ public class Quersumme {
     }
 
     static void aufgabeB() {
-        /**Gibt alle Zahlen zwischen 1 und 1000 aus, deren Quersumme 15 ist
-         */
+        /**Gibt alle Zahlen zwischen 1 und 1000 aus, deren Quersumme 15 ist*/
         System.out.println("Die Zahlen zwischen 1 und 1000, deren Quersumme 15 ist:");
         for (int i = 1; i <= 1000; i++) {
             if (berechneQuersumme(i) == 15) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    static void aufgabeC() {
+        /**Gibt die Zahlen zwischen 1 und 1000 aus, deren Quersumme
+         * ein Vielfaches von 7 ist.
+         */
+        for (int i = 1; i <= 1000; i++) {
+            if (berechneQuersumme(i) % 7 == 0) {
                 System.out.println(i);
             }
         }

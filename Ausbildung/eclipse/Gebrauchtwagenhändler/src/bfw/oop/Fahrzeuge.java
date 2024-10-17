@@ -1,19 +1,22 @@
 package bfw.oop;
 
 public class Fahrzeuge {
+	/**@category Superklasse
+	 * @summary Erstellt Autos und Motorräder
+	 * @author WoeckenerM */
+	
 	//Attribute
 	private double preis; //Preis des Autos
 	private String modell; //Modell des Autos
 	private int baujahr; //Baujahr des Autos
 	private int kilometerstand; //Kilometerstand des Autos
-	private String farbe; //Farbe des Autos
 		
 	//Konstruktor
-	public Fahrzeuge (double wert1, String wert2, int wert3, int wert4) {
-		this.preis = wert1;
-		this.modell = wert2;
-		this.baujahr = wert3;
-		this.kilometerstand = wert4;
+	public Fahrzeuge (double prs, String mdl, int bj, int km) {
+		this.preis = prs;
+		this.modell = mdl;
+		this.baujahr = bj;
+		this.kilometerstand = km;
 	}
 	
 	//Getter Methoden
@@ -29,4 +32,9 @@ public class Fahrzeuge {
 	public int getKilometerstand() {
 		return kilometerstand;
 	}
+	
+	//Setter Methoden
+		public void setPreis(double wert) {
+			this.preis = wert;
+		}
 }
