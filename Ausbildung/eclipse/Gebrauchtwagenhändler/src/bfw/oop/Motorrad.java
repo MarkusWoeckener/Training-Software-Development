@@ -1,7 +1,8 @@
 package bfw.oop;
 
 public class Motorrad extends Fahrzeuge{
-	private int hubraum;
+	//Klassenattribute
+	private int hubraum; //Hubraum in ccm
 	
 	//Konstruktor
 	public Motorrad(double prs, String mdl, int bj, int km, int ccm) {
@@ -12,6 +13,11 @@ public class Motorrad extends Fahrzeuge{
 	//Getter Methode
 	public int getHubraum() {
 		return hubraum;
+	}
+	
+	//Setter Methode
+	public void setHubraum(int wert) {
+		this.hubraum = wert;
 	}
 
 }
