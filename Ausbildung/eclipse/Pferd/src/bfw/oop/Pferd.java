@@ -25,13 +25,34 @@ public class Pferd {
 	}
 	
 	/**
+	 * Erhöht dich Geschwindigkeit des Pferden um den weitergegebenen Wert
+	 * @param deltaV Gibt an um wie viele km/h die Geschwindigkeit erhöhrt werden soll
+	 */
+	public void beschleunigen(double deltaV) {
+		this.speed += deltaV;
+		if (speed > vmax) speed = vmax; //Wenn Vmax erreicht, Geschwindigkeit deckeln
+		System.out.printf("Neue Geschwindigkeit: %.1f km/h \n", speed);
+	}
+	
+	/**
+	 * Verringert die Geschwindigkeit um den gegebneen Wert bis zum Stillstand
+	 * @param deltaV Gibt an um wie viele km/h die Geschwindigkeit reduziert werden soll
+	 */
+	public void bremsen(double deltaV) {
+		this.speed -= deltaV;
+		if (speed <= 0) speed = 0; //Wenn die Geschwindigkeit 0 km/h erreicht, anhalten.
+		System.out.printf("Neue Geschwindigkeit: %.1f km/h \n", speed);
+	}
+	
+	/**
 	 * Gibt alle Daten eines Pferdes aus
 	 */
 	public void printData() {
 		System.out.println("Name: " + name);
-		System.out.printf("Größe: %.2f%n", groesse);
-		System.out.println("Höchstgeschwindigkeit " + vmax);
-		System.out.println("Geschwindigkeit: " + speed + "\n");
+		System.out.printf("Größe: %.2f m%n", groesse);
+		System.out.printf("Höchstgeschwindigkeit %.1f km/h\n", vmax);
+		System.out.printf("Geschwindigkeit: %.1f km/h\n", speed);
+		System.out.println();
 	}
 	
 	/**
