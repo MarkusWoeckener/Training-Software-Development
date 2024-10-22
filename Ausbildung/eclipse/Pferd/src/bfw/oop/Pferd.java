@@ -1,4 +1,5 @@
 package bfw.oop;
+
 /**
  * Klasse die ein Pferd repräsentiert
  * @author WoeckenerM
@@ -25,6 +26,11 @@ public class Pferd {
 	}
 	
 	/**
+	 * Leerer Konstruktor
+	 */
+	public Pferd() {}
+	
+	/**
 	 * Erhöht dich Geschwindigkeit des Pferden um den weitergegebenen Wert
 	 * @param deltaV Gibt an um wie viele km/h die Geschwindigkeit erhöhrt werden soll
 	 */
@@ -42,6 +48,23 @@ public class Pferd {
 		this.speed -= deltaV;
 		if (speed <= 0) speed = 0; //Wenn die Geschwindigkeit 0 km/h erreicht, anhalten.
 		System.out.printf("Neue Geschwindigkeit: %.1f km/h \n", speed);
+	}
+	
+	/**
+	 * Lässt den Benutzer die Attribute für ein neues Pferd eingeben
+	 * @throws Exception
+	 */
+	public void setAttributes() throws Exception {
+		System.out.println("Gib die Daten für das neue Pferd ein");
+		System.out.print("Name: ");
+		this.name = PferdMain.getString();
+		System.out.print("Größe: ");
+		this.groesse = PferdMain.getDouble();
+		System.out.print("Höchstgeschwindigkeit: ");
+		this.vmax = PferdMain.getDouble();
+		System.out.print("akt Geschwindigkeit: ");
+		this.speed = PferdMain.getDouble();
+		System.out.println();
 	}
 	
 	/**
@@ -81,5 +104,37 @@ public class Pferd {
 	 */
 	public String getName() {
 		return name;
+	}
+	
+	/**
+	 * Ändert die Größe
+	 * @param wert Neue Größe in Meter
+	 */
+	public void setGroesse(double wert) {
+		this.groesse = wert;
+	}
+	
+	/**
+	 * Ändert die aktuelle Geschwindigkeit
+	 * @param wert aktuelle Geschwindigkeit in km/h
+	 */
+	public void setSpeed(double wert) {
+		this.speed = wert;
+	}
+	
+	/**
+	 * Ändert die Höchstgeschwindigkeit
+	 * @param wert neue Höchstgeschwindigkeit in km/h
+	 */
+	public void setVmax(double wert) {
+		this.vmax = wert;
+	}
+	
+	/**
+	 * Ändert den Namen
+	 * @param wert neuer Name
+	 */
+	public void setName(String wert) {
+		this.name = wert;
 	}
 }
