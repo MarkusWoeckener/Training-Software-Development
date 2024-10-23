@@ -79,28 +79,32 @@ public class Pferd {
 	}
 	
 	/**
-	 * @return Größe des Pferdes
+	 * Gibt die Größe des Pferdes zurück
+	 * @return Größe in Meter
 	 */
 	public double getGroesse() {
 		return groesse;
 	}
 	
 	/**
-	 * @return Aktuelle Geschwindigkeit
+	 * Gibt die aktuelle Geschwindigkeit zurück
+	 * @return Geschwindigkeit in km/h
 	 */
 	public double getSpeed() {
 		return speed;
 	}
 	
 	/**
-	 * @return Höchstgeschwindigkeit
+	 * Gibt die Höchstgeschwindigkeit zurück
+	 * @return Höchstgeschwindigkeit in km/h
 	 */
 	public double getVmax() {
 		return vmax;
 	}
 	
 	/**
-	 *  @return Name des Pferdes
+	 * Gibt den Namen des Pferdes zurück
+	 *  @return Name
 	 */
 	public String getName() {
 		return name;
