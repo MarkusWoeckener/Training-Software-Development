@@ -1,6 +1,7 @@
 package bfw.oop;
 
 /**
+ * Main-Klasse des Projektes Schneckenrennen
  * @author WoeckenerM 
  */
 public class Main {

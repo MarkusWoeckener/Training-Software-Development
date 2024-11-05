@@ -3,6 +3,7 @@ package bfw.oop;
 import java.util.ArrayList;
 
  /**
+  * Klasse die ein Rennen darstellt
   * @author WoeckenerM
   */
 public class Rennen {
