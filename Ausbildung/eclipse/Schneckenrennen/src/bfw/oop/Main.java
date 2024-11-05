@@ -1,5 +1,8 @@
 package bfw.oop;
 
+/**
+ * @author WoeckenerM 
+ */
 public class Main {
 	public static void main(String[] args) {
 		Rennschnecke schnecke = new Rennschnecke("Frieda", "Weinberg", 3.14);
