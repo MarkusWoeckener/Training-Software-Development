@@ -5,16 +5,27 @@ package bfw.oop;
  * @author WoeckenerM 
  */
 public class Main {
+	/**
+	 * Main Methode des Programms
+	 * @param args
+	 */
 	public static void main(String[] args) {
+		//Schnecken erstellen
 		Rennschnecke schnecke = new Rennschnecke("Frieda", "Weinberg", 3.14);
 		Rennschnecke schnecke2 = new Rennschnecke("Ernie", "Nackt", 4.2);
 		Rennschnecke schnecke3 = new Rennschnecke("Bert", "Orange", 3.6);
-		Rennschnecke[] schnecken = {schnecke, schnecke2, schnecke3};
+		
+		//Rennen erstellen
+		Rennen rennen = new Rennen("Test", 25);
+		
+		//Schnecken einem Rennen hinzufügen
+		rennen.addRennschnecke(schnecke);
+		rennen.addRennschnecke(schnecke2);
+		rennen.addRennschnecke(schnecke3);
+		
 		schnecke.krieche();
-		System.out.println(schnecken[0]);
-		Rennschnecke temp = schnecken[0];
-		schnecken[0] = schnecken[2];
-		schnecken[2] = temp;
-		System.out.println(schnecken[0]);
+		
+		System.out.println(rennen);
+
 	}
 }

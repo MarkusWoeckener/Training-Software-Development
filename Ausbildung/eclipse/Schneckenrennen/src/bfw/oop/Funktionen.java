@@ -10,8 +10,8 @@ public class Funktionen {
 	//Eingabemethoden
 	
 	/**
-	 * Gibt einen String zurück
-	 * @return Eingabe als String
+	 * Gibt einen {@code String} zurück
+	 * @return Eingabe als {@code String}
 	 * @throws Exception
 	 */
 	public String readString() throws Exception{
@@ -20,8 +20,9 @@ public class Funktionen {
 	}
 	
 	/**
-	 * Gibt eine Zahl (Double) zurück
-	 * @return Eingabe als Double
+	 * Gibt eine Zahl als {@code Double} zurück<br>
+	 * Nutzt {@link #readString()} um die Eingabe einzulesen
+	 * @return Eingabe als {@code Double}
 	 * @throws Exception
 	 */
 	public double readDouble() throws Exception{
@@ -29,8 +30,9 @@ public class Funktionen {
 	}
 	
 	/**
-	 * Gibt eine Zahl (Integer) zurück
-	 * @return Eingabe als Integer
+	 * Gibt eine Zahl ({@code Integer}) zurück<br>
+	 * Nutzt {@link #readString()} um die Eingabe einzulesen
+	 * @return Eingabe als {@code Integer}
 	 * @throws Exception
 	 */
 	public int readInt() throws Exception{
@@ -38,8 +40,9 @@ public class Funktionen {
 	}
 	
 	/**
-	 * Gibt einen Character zurück
-	 * @return Erstes Zeichen der eingabe als Character
+	 * Ruft {@link #readString()} und nutzt das erste Zeichen der Eingabe 
+	 * als {@code Character} und wandelt diesen in lower case um.
+	 * @return ein {@code Character} in {@code LowerCase}
 	 * @throws Exception
 	 */
 	public char readChar() throws Exception{

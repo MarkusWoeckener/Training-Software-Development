@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
  /**
   * Klasse die ein Rennen darstellt
+  * @param name {@code string} der den Namen des Rennens enthält
+  * @param strecke {@code integer} die die Strecke des Rennens in Meter angibt
+  * 
   * @author WoeckenerM
   */
 public class Rennen {
@@ -14,8 +17,8 @@ public class Rennen {
 	
 	/**
 	 * Konstruktor für ein Rennen
-	 * @param name Name des Rennens (String)
-	 * @param strecke Länge des Rennens in Meter (Integer)
+	 * @param name {@code string}, Name des Rennens
+	 * @param strecke {@code integer}, Länge des Rennens in Meter
 	 */
 	public Rennen(String name, int strecke) {
 		setName(name);
@@ -23,11 +26,23 @@ public class Rennen {
 	}
 	
 	/**
-	 * Dem Rennen eine Schnecke hinzufügen
-	 * @param neueSchnecke (Schneckenobjekt)
+	 * Dem Rennen eine Schnecke hinzufügen<br>
+	 * Passt {@code nTeilnehmer} entsprechend an.
+	 * @param neueSchnecke {@code Rennschnecke}, die Schnecke, die hinzugefügt werden soll
 	 */
 	public void addRennschnecke(Rennschnecke neueSchnecke) {
 		schnecken.add(neueSchnecke);
+		setNTeilnehmer(schnecken.size());
+	}
+	
+	/**
+	 * Eine Schnecke aus dem Rennen entfernen<br>
+	 * Passt {@code nTeilnehmer} entsprechend an.
+	 * @param index {@code integer}, Index der zu entfernenden Schnecke
+	 */
+	public void removeRennschnecke(int index) {
+		schnecken.remove(index);
+		setNTeilnehmer(schnecken.size());
 	}
 	
 	/**
@@ -35,14 +50,14 @@ public class Rennen {
 	 */
 	@Override
 	public String toString() {
-		return "Name des Rennens: " + name + "\nAnzahl der Teilnehmer: " + nTeilnehmer + "\nLänge des Rennens: " + strecke;
+		return "Name des Rennens: " + name + "\nAnzahl der Teilnehmer: " + nTeilnehmer + "\nLänge des Rennens: " + strecke + "\nTeilnehmer: " + schnecken;
 	}
 	
 	//Setter Methoden
 	
 	/**
 	 * Name des Rennens eingeben
-	 * @param name Name des Rennens (String)
+	 * @param name {@code string}, Name des Rennens
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -50,7 +65,7 @@ public class Rennen {
 	
 	/**
 	 * Anzahl der Teilnehmer festlegen
-	 * @param anzahl (Integer)
+	 * @param anzahl {@code integer}, repräsentiert die Anzahl der teilnehmenden Schnecken
 	 */
 	public void setNTeilnehmer(int anzahl) {
 		this.nTeilnehmer = anzahl;
@@ -58,7 +73,7 @@ public class Rennen {
 	
 	/**
 	 * Länge des Rennens editieren
-	 * @param strecke Länge des Rennens in Meter (Integer)
+	 * @param strecke {@code integer}, Länge des Rennens in Meter 
 	 */
 	public void setStrecke(int strecke) {
 		this.strecke = strecke;

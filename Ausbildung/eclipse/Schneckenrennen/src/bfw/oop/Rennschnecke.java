@@ -2,6 +2,9 @@ package bfw.oop;
 
 /**
  * Klasse die eine Rennschnecke darstellt
+ * @param name {@code string}, Name der Schnecke
+ * @param rasse {@code string}, Rasse der schnecke
+ * @param vMax {@code double}, Höchstgeschwindigkeit in m/s
  * @author WoeckenerM
  */
 public class Rennschnecke {
@@ -12,9 +15,9 @@ public class Rennschnecke {
 	
 	/**
 	 * Konstruktor
-	 * @param name Name (String)
-	 * @param rasse Rasse (String)
-	 * @param vMax Höchstgeschwindigkeit in m/s (Double)
+	 * @param name {@code string}, Name einer Schnecke
+	 * @param rasse {@code string} gibt die Rasse der Schnecke an
+	 * @param vMax {@code double}, Höchstgeschwindigkeit in m/s
 	 */
 	public Rennschnecke(String name, String rasse, double vMax) {
 		setName(name);
@@ -23,7 +26,8 @@ public class Rennschnecke {
 	}
 	
 	/**
-	 * Lässt eine Schnecke für eine Zeiteinheit eine zufällige Strecke kriechen
+	 * Lässt eine Schnecke für eine Zeiteinheit eine zufällige Strecke kriechen<br>
+	 * Addiert diese Strecke zu {@code distanz}.
 	 */
 	public void krieche() {
 		distanz += Math.random() * vMax;
@@ -40,28 +44,28 @@ public class Rennschnecke {
 	//Getter Methoden
 	
 	/**
-	 * @return the name
+	 * @return Name der Schnecke ({@code string})
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * @return the rasse
+	 * @return Rasse der Schnecke ({@code string})
 	 */
 	public String getRasse() {
 		return rasse;
 	}
 
 	/**
-	 * @return the vMax
+	 * @return Vmax der Schnecke ({@code double})
 	 */
 	public double getvMax() {
 		return vMax;
 	}
 
 	/**
-	 * @return the distanz
+	 * @return Die zurückgelegte Strecke in Meter ({@code double})
 	 */
 	public double getDistanz() {
 		return distanz;
@@ -70,28 +74,28 @@ public class Rennschnecke {
 	//Setter Mehoden
 	
 	/**
-	 * @param name the name to set
+	 * @param name {@code string}, Name der Schnecke
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * @param rasse the rasse to set
+	 * @param rasse {@code string} Rasse der Schnecke
 	 */
 	public void setRasse(String rasse) {
 		this.rasse = rasse;
 	}
 
 	/**
-	 * @param vMax the vMax to set
+	 * @param vMax {@code double} Höchstgeschwindigkeit der Schnecke
 	 */
 	public void setvMax(double vMax) {
 		this.vMax = vMax;
 	}
 
 	/**
-	 * @param distanz the distanz to set
+	 * @param distanz {@code double} Im Rennen zurückgelegte Distanz in Meter
 	 */
 	public void setDistanz(double distanz) {
 		this.distanz = distanz;
