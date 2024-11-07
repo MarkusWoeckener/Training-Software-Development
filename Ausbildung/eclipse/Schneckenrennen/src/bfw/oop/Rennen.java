@@ -45,6 +45,19 @@ public class Rennen {
 		setNTeilnehmer(schnecken.size());
 	}
 	
+	public void removeRennschnecke(String name) {
+		for(Rennschnecke schnecke : schnecken) {
+			if(schnecke.getName() == name) schnecken.remove(schnecke);
+		}
+	}
+	
+	public Rennschnecke ermittleGewinner() {
+		for(Rennschnecke schnecke : schnecken) {
+			if(schnecke.getDistanz() >= strecke) return schnecke;
+			//else return null;
+		}
+	}
+	
 	/**
 	 * Gibt die Daten eines Rennens als String aus
 	 */

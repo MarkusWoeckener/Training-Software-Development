@@ -37,6 +37,7 @@ public class Rennschnecke {
 	 * Gibt die Daten einer Schnecke zurück
 	 * @return Name, Rasse, Vmax und zurückgelegte Strecke
 	 */
+	@Override
 	public String toString() {
 		return "Name: " + name + "\nRasse: " + rasse + "\nVmax: " + vMax + "\nZurückgelegte Strecke: " + distanz;
 	}
