@@ -45,6 +45,11 @@ public class Rennen {
 		setNTeilnehmer(schnecken.size());
 	}
 	
+	/**
+	 * Löscht eine Schnecke aus dem Rennen<br>
+	 * Sucht nach dem Namen und löscht alle Schnecken mit diesem Namen.
+	 * @param name {@code string}, Name der zu entfernenden Schnecke
+	 */
 	public void removeRennschnecke(String name) {
 		for(Rennschnecke schnecke : schnecken) {
 			if(schnecke.getName() == name) schnecken.remove(schnecke);
