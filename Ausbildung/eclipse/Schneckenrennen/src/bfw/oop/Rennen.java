@@ -50,7 +50,7 @@ public class Rennen {
 	 * Sucht nach dem Namen und löscht alle Schnecken mit diesem Namen.
 	 * @param name {@code string}, Name der zu entfernenden Schnecke
 	 */
-	public void removeRennschnecke(String name) {
+	public void removeRennschnecke(String name) throws Exception{
 		for(Rennschnecke schnecke : schnecken) {
 			if(schnecke.getName() == name) schnecken.remove(schnecke);
 		}
@@ -61,7 +61,7 @@ public class Rennen {
 			if(schnecke.getDistanz() >= strecke) return schnecke;
 			//else return null;
 		}
-	}
+//	}
 	
 	/**
 	 * Gibt die Daten eines Rennens als String aus

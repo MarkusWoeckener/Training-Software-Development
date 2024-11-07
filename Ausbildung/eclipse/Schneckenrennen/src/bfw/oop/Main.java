@@ -24,7 +24,7 @@ public class Main {
 		rennen.addRennschnecke(schnecke3);
 		
 		schnecke.krieche();
-		
+		rennen.removeRennschnecke("Bert");
 		System.out.println(rennen);
 
 	}
