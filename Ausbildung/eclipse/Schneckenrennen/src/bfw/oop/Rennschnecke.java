@@ -1,10 +1,13 @@
 package bfw.oop;
 
 /**
- * Klasse die eine Rennschnecke darstellt
- * @param name {@code string}, Name der Schnecke
- * @param rasse {@code string}, Rasse der schnecke
- * @param vMax {@code double}, Höchstgeschwindigkeit in m/s
+ * Klasse die eine Rennschnecke darstellt<br>
+ * Bei der erstellung anzugebene Parameter:<br>
+ * <ul>
+ * <li>{@code name} Name der Schnecke
+ * <li>{@code rasse} Rasse der Schnecke
+ * <li>{@code vMax} Höchstgeschwindigkeit in m/s
+ * </ul>
  * @author WoeckenerM
  */
 public class Rennschnecke {
@@ -27,7 +30,6 @@ public class Rennschnecke {
 	
 	/**
 	 * Lässt eine Schnecke für eine Zeiteinheit eine zufällige Strecke kriechen<br>
-	 * Addiert diese Strecke zu {@code distanz}.
 	 */
 	public void krieche() {
 		distanz += Math.random() * vMax;
@@ -39,7 +41,7 @@ public class Rennschnecke {
 	 */
 	@Override
 	public String toString() {
-		return "Name: " + name + "\nRasse: " + rasse + "\nVmax: " + vMax + "\nZurückgelegte Strecke: " + distanz;
+		return String.format("Name: %s\nRasse: %s\nVmax: %.2f m/s\nZurückgelegte Strecke: %.2f m",name , rasse, vMax, distanz);
 	}
 
 	//Getter Methoden

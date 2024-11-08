@@ -9,22 +9,22 @@ public class Main {
 	 * Main Methode des Programms
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		//Schnecken erstellen
 		Rennschnecke schnecke = new Rennschnecke("Frieda", "Weinberg", 3.14);
-		Rennschnecke schnecke2 = new Rennschnecke("Ernie", "Nackt", 4.2);
-		Rennschnecke schnecke3 = new Rennschnecke("Bert", "Orange", 3.6);
+		Rennschnecke schnecke2 = new Rennschnecke("Ernie", "Nackt", 3.2);
+		Rennschnecke schnecke3 = new Rennschnecke("Bert", "Orange", 3.1);
 		
 		//Rennen erstellen
-		Rennen rennen = new Rennen("Test", 25);
+		Rennen rennen = new Rennen("Test", 256);
 		
 		//Schnecken einem Rennen hinzufügen
 		rennen.addRennschnecke(schnecke);
 		rennen.addRennschnecke(schnecke2);
 		rennen.addRennschnecke(schnecke3);
 		
-		schnecke.krieche();
-		rennen.removeRennschnecke("Bert");
+		rennen.durchfuehren();
+		
 		System.out.println(rennen);
 
 	}

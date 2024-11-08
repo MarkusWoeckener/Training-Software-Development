@@ -3,9 +3,12 @@ package bfw.oop;
 import java.util.ArrayList;
 
  /**
-  * Klasse die ein Rennen darstellt
-  * @param name {@code string} der den Namen des Rennens enthält
-  * @param strecke {@code integer} die die Strecke des Rennens in Meter angibt
+  * Klasse die ein Rennen darstellt<br>
+  * Mitzugebende Parameter:<br>
+  * <ul>
+  * <li>{@code name} der Name des Rennens
+  * <li>{@code strecke} die Strecke des Rennens in Meter
+  * </UL>
   * 
   * @author WoeckenerM
   */
@@ -46,29 +49,46 @@ public class Rennen {
 	}
 	
 	/**
-	 * Löscht eine Schnecke aus dem Rennen<br>
-	 * Sucht nach dem Namen und löscht alle Schnecken mit diesem Namen.
-	 * @param name {@code string}, Name der zu entfernenden Schnecke
+	 * Ermittelt ob und wenn ja welche Schnecke das Rennen gewonnen hat.<br>
+	 * Prüft für jede Schnecke, ob die zurückgelegte Distanz größer als<br>
+	 * die Länge des Rennens ist und gibt die Gewinnerschnecke als Objekt zurück.
+	 * @return {@code Rennschnecke} Schnecke, die das Rennen gewonnen hat
 	 */
-	public void removeRennschnecke(String name) throws Exception{
+	Rennschnecke ermittleGewinner() {
 		for(Rennschnecke schnecke : schnecken) {
-			if(schnecke.getName() == name) schnecken.remove(schnecke);
+			if(schnecke.getDistanz() >= strecke) {
+				return schnecke;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Lässt jede Schnecke im Rennen einmal kriechen.
+	 */
+	void lasseSchneckenKriechen() {
+		for(Rennschnecke schnecke : schnecken) {
+			schnecke.krieche();
 		}
 	}
 	
-	public Rennschnecke ermittleGewinner() {
-		for(Rennschnecke schnecke : schnecken) {
-			if(schnecke.getDistanz() >= strecke) return schnecke;
-			//else return null;
+	/**
+	 * Führt das Rennen durch<br>
+	 * Lässt die Schnecken kriechen, bis {@link #ermittleGewinner()}<br>
+	 * einen Gewinner zurückgibt.
+	 */
+	void durchfuehren() {
+		while(ermittleGewinner() == null) {
+			lasseSchneckenKriechen();
 		}
-//	}
+	}
 	
 	/**
 	 * Gibt die Daten eines Rennens als String aus
 	 */
 	@Override
 	public String toString() {
-		return "Name des Rennens: " + name + "\nAnzahl der Teilnehmer: " + nTeilnehmer + "\nLänge des Rennens: " + strecke + "\nTeilnehmer: " + schnecken;
+		return String.format("Name des Rennens: %s\nAnzahl der Teilnehmer: %d\nLänge des Rennens: " + strecke + "\nGewinner:\n", name, nTeilnehmer, strecke) + ermittleGewinner();
 	}
 	
 	//Setter Methoden
