@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Rennen {
 	private String name;
 	private int nTeilnehmer;
-	private ArrayList<Rennschnecke> schnecken = new ArrayList<Rennschnecke>();
+	private ArrayList<Rennschnecke> schnecken;
 	private int strecke;
 	
 	/**
@@ -26,6 +26,7 @@ public class Rennen {
 	public Rennen(String name, int strecke) {
 		setName(name);
 		setStrecke(strecke);
+		this.schnecken = new ArrayList<Rennschnecke>();
 	}
 	
 	/**
@@ -88,7 +89,7 @@ public class Rennen {
 	 */
 	@Override
 	public String toString() {
-		return String.format("Name des Rennens: %s\nAnzahl der Teilnehmer: %d\nLänge des Rennens: " + strecke + "\nGewinner:\n", name, nTeilnehmer, strecke) + ermittleGewinner();
+		return String.format("Name des Rennens: %s\nAnzahl der Teilnehmer: %d\nLänge des Rennens: %d Meter\n\nGewinner:\n", name, nTeilnehmer, strecke) + ermittleGewinner();
 	}
 	
 	//Setter Methoden

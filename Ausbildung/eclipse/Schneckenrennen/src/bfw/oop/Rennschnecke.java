@@ -41,7 +41,7 @@ public class Rennschnecke {
 	 */
 	@Override
 	public String toString() {
-		return String.format("Name: %s\nRasse: %s\nVmax: %.2f m/s\nZurückgelegte Strecke: %.2f m",name , rasse, vMax, distanz);
+		return String.format("Name: %s\nRasse: %s\nVmax: %.2f m/s\nZurückgelegte Strecke: %.2f Meter",name , rasse, vMax, distanz);
 	}
 
 	//Getter Methoden
