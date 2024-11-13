@@ -117,4 +117,11 @@ public class Rennen {
 	public void setStrecke(int strecke) {
 		this.strecke = strecke;
 	}
+
+	/**
+	 * @return the schnecken
+	 */
+	public ArrayList<Rennschnecke> getSchnecken() {
+		return schnecken;
+	}
 }
