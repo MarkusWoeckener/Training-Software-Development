@@ -89,13 +89,15 @@ public class Rennen {
 	 */
 	@Override
 	public String toString() {
-		return String.format("Name des Rennens: %s\nAnzahl der Teilnehmer: %d\nLänge des Rennens: %d Meter\n\nGewinner:\n", name, nTeilnehmer, strecke) + ermittleGewinner();
+		return String.format("%s\n\nAnzahl der Teilnehmer: %d\n"
+				+ "Länge des Rennens: %d Meter\n"
+				+ "\nGewinner:\n", name, nTeilnehmer, strecke) + ermittleGewinner();
 	}
 	
 	//Setter Methoden
 	
 	/**
-	 * Name des Rennens eingeben
+	 * Setter Methode für den Namen des Rennens
 	 * @param name {@code string}, Name des Rennens
 	 */
 	public void setName(String name) {
@@ -103,7 +105,7 @@ public class Rennen {
 	}
 	
 	/**
-	 * Anzahl der Teilnehmer festlegen
+	 * Setter Methode für die Anzahl der Teilnehmer
 	 * @param anzahl {@code integer}, repräsentiert die Anzahl der teilnehmenden Schnecken
 	 */
 	public void setNTeilnehmer(int anzahl) {
@@ -111,7 +113,7 @@ public class Rennen {
 	}
 	
 	/**
-	 * Länge des Rennens editieren
+	 * Setter Methode für die Länge des Rennens
 	 * @param strecke {@code integer}, Länge des Rennens in Meter 
 	 */
 	public void setStrecke(int strecke) {

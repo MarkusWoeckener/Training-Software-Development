@@ -14,7 +14,7 @@ public class Rennschnecke {
 	private String name; //Name der Schnecke
 	private String rasse; //Rasse der Schnecke
 	private double vMax; //Höchstgeschwindigkeit in m/s
-	private double distanz = 0; //Zurückgelegte Distanz in Meter
+	private double distanz; //Zurückgelegte Distanz in Meter
 	
 	/**
 	 * Konstruktor
@@ -26,13 +26,14 @@ public class Rennschnecke {
 		setName(name);
 		setRasse(rasse);
 		setvMax(vMax);
+		setDistanz(0);
 	}
 	
 	/**
 	 * Lässt eine Schnecke für eine Zeiteinheit eine zufällige Strecke kriechen<br>
 	 */
 	public void krieche() {
-		distanz += Math.random() * vMax;
+		setDistanz(this.distanz += Math.random() * vMax);
 	}
 	
 	/**
@@ -41,12 +42,17 @@ public class Rennschnecke {
 	 */
 	@Override
 	public String toString() {
-		return String.format("Name: %s\nRasse: %s\nVmax: %.2f m/s\nZurückgelegte Strecke: %.2f Meter",name , rasse, vMax, distanz);
+		return String.format("Name: %s\n"
+				+ "Rasse: %s\n"
+				+ "Vmax: %.2f m/s\n"
+				+ "Zurückgelegte Strecke: %.2f Meter\n", 
+				getName(), getRasse(), getvMax(), getDistanz());
 	}
 
 	//Getter Methoden
 	
 	/**
+	 * Getter Methode für den Namen der Schnecke
 	 * @return Name der Schnecke ({@code string})
 	 */
 	public String getName() {
@@ -54,6 +60,7 @@ public class Rennschnecke {
 	}
 
 	/**
+	 * Getter Methode für die Schneckenrasse 
 	 * @return Rasse der Schnecke ({@code string})
 	 */
 	public String getRasse() {
@@ -61,6 +68,7 @@ public class Rennschnecke {
 	}
 
 	/**
+	 * Getter Methode für Vmax
 	 * @return Vmax der Schnecke ({@code double})
 	 */
 	public double getvMax() {
@@ -68,6 +76,7 @@ public class Rennschnecke {
 	}
 
 	/**
+	 * Geter Methode für die zurückgelegte Strecke
 	 * @return Die zurückgelegte Strecke in Meter ({@code double})
 	 */
 	public double getDistanz() {
@@ -77,6 +86,7 @@ public class Rennschnecke {
 	//Setter Mehoden
 	
 	/**
+	 * Setter Methode für den Namen der Schnecke
 	 * @param name {@code string}, Name der Schnecke
 	 */
 	public void setName(String name) {
@@ -84,6 +94,7 @@ public class Rennschnecke {
 	}
 
 	/**
+	 * Setter Methode für die Schneckenrasse
 	 * @param rasse {@code string} Rasse der Schnecke
 	 */
 	public void setRasse(String rasse) {
@@ -91,6 +102,7 @@ public class Rennschnecke {
 	}
 
 	/**
+	 * Setter Methode für Vmax der Schnecke
 	 * @param vMax {@code double} Höchstgeschwindigkeit der Schnecke
 	 */
 	public void setvMax(double vMax) {
@@ -98,10 +110,10 @@ public class Rennschnecke {
 	}
 
 	/**
+	 * Setter Methode für die zurückgelegte Distanz
 	 * @param distanz {@code double} Im Rennen zurückgelegte Distanz in Meter
 	 */
 	public void setDistanz(double distanz) {
 		this.distanz = distanz;
-	}
-	
+	}	
 }

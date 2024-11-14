@@ -11,10 +11,22 @@ public class Main {
 	 */
 	public static void main(String[] args) throws Exception{
 		//Schnecken erstellen
-		Rennschnecke schnecke = new Rennschnecke("Frieda", "Weinberg", 3.14);
-		Rennschnecke schnecke2 = new Rennschnecke("Ernie", "Nackt", 3.2);
-		Rennschnecke schnecke3 = new Rennschnecke("Bert", "Orange", 3.1);
-		Rennschnecke schnecke4 = new Rennschnecke("Kermit", "Weinberg", 3.16);
+		Rennschnecke schnecke = new Rennschnecke(
+				"Frieda", 
+				"Weinberg", 
+				3.14);
+		Rennschnecke schnecke2 = new Rennschnecke(
+				"Ernie", 
+				"Nackt", 
+				3.2);
+		Rennschnecke schnecke3 = new Rennschnecke(
+				"Bert", 
+				"Orange", 
+				3.1);
+		Rennschnecke schnecke4 = new Rennschnecke(
+				"Kermit", 
+				"Weinberg", 
+				3.16);
 		
 		//Rennen erstellen
 		Rennen rennen = new Rennen("Test", 256);
@@ -24,10 +36,30 @@ public class Main {
 		rennen.addRennschnecke(schnecke2);
 		rennen.addRennschnecke(schnecke3);
 		rennen.addRennschnecke(schnecke4);
+
+		//Wettbüro erstellen
+		Wettbuero wb = new Wettbuero(rennen);
 		
-		rennen.durchfuehren();
+		//Wetten hinzufügen
+		wb.wetteAnnehmen(
+				"Ernie", 
+				100, 
+				"Markus");
 		
-		System.out.println(rennen);
+		wb.wetteAnnehmen(
+				"Frieda", 
+				70, 
+				"Spieler");
+		
+		wb.wetteAnnehmen(
+				"Bert", 
+				80, 
+				"Jar Jar");
+		
+		//Rennen durchführen
+		wb.rennenDurchfuehren();
+		System.out.println(wb);
+//		System.out.println(rennen);
 		
 	}
 }
