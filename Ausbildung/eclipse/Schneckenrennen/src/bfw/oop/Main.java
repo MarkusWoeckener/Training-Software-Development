@@ -7,7 +7,7 @@ package bfw.oop;
 public class Main {
 	/**
 	 * Main Methode des Programms
-	 * @param args
+	 * @param args {@code String[]} Befehlszeilenargumente
 	 */
 	public static void main(String[] args) throws Exception{
 		//Schnecken erstellen

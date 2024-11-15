@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"Alle Klassen und Schnittstellen","u":"allclasses-index.html"},{"p":"bfw.oop","l":"Funktionen"},{"p":"bfw.oop","l":"Main"},{"p":"bfw.oop","l":"Rennen"},{"p":"bfw.oop","l":"Rennschnecke"}];updateSearchResults();
+typeSearchIndex = [{"l":"Alle Klassen und Schnittstellen","u":"allclasses-index.html"},{"p":"bfw.oop","l":"Funktionen"},{"p":"bfw.oop","l":"Main"},{"p":"bfw.oop","l":"Rennen"},{"p":"bfw.oop","l":"Rennschnecke"},{"p":"bfw.oop","l":"Wettbuero"},{"p":"bfw.oop","l":"Wette"}];updateSearchResults();

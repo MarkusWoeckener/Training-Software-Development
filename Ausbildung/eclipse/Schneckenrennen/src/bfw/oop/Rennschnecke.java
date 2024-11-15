@@ -1,12 +1,12 @@
 package bfw.oop;
 
 /**
- * Klasse die eine Rennschnecke darstellt<br>
- * Bei der erstellung anzugebene Parameter:<br>
+ * Klasse die eine Rennschnecke darstellt<p></p>
+ * <b>Parameter:</b><br>
  * <ul>
- * <li>{@code name} Name der Schnecke
- * <li>{@code rasse} Rasse der Schnecke
- * <li>{@code vMax} Höchstgeschwindigkeit in m/s
+ * <li><b>name</b> {@code string} Name der Schnecke
+ * <li><b>rasse</b> {@code string} Rasse der Schnecke
+ * <li><b>vMax</b> {@code double} Höchstgeschwindigkeit in m/s
  * </ul>
  * @author WoeckenerM
  */

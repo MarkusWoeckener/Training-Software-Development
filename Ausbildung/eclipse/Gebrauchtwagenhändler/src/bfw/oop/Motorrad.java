@@ -7,7 +7,7 @@ public class Motorrad extends Fahrzeuge{
 	//Konstruktor
 	public Motorrad(double prs, String mdl, int bj, int km, int ccm) {
 		super(prs, mdl, bj, km);
-		this.hubraum = ccm;
+		setHubraum(ccm);
 	}
 	
 	//Getter Methode

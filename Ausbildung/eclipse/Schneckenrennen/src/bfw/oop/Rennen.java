@@ -3,11 +3,11 @@ package bfw.oop;
 import java.util.ArrayList;
 
  /**
-  * Klasse die ein Rennen darstellt<br>
-  * Mitzugebende Parameter:<br>
+  * Klasse die ein Rennen darstellt<p></p>
+  * <b>Parameter:</b>
   * <ul>
-  * <li>{@code name} der Name des Rennens
-  * <li>{@code strecke} die Strecke des Rennens in Meter
+  * <li><b>name</b> {@code string} der Name des Rennens
+  * <li><b>strecke</b> {@code integer} die Strecke des Rennens in Meter
   * </UL>
   * 
   * @author WoeckenerM

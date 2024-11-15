@@ -1,8 +1,8 @@
 package bfw.oop;
 
 /**
- * Stellt eine Wette innerhalb des {@link #Wettbuero} dar<p>
- * <b>Parameter:</b><p>
+ * Stellt eine Wette innerhalb des Wettbueros dar<p></p>
+ * <b>Parameter:</b>
  * <ul>
  * <li><b>schneckenName</b> {@code string} Name der Schnecke auf die gewettet wird
  * <li><b>wettEinsatz</b> {@code int} der Wetteinsatz

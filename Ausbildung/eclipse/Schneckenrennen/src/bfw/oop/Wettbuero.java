@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Repräsentiert das Wettbüro für die Rennen<br>
  * Nimmt Wetten entgegen und führt Rennen durch auf die gewettet wurde.<br>
  * Beim Erstellen eines neuen Wettbüros ist als Parameter das Rennen<br>
- * auf das gewettet werden soll als Parameter anzugeben.<p>
+ * auf das gewettet werden soll als Parameter anzugeben.<p></p>
  * <b>Parameter</b>
  * <ul>
  * <li><b>rennId</b> {@code Rennen} Das Rennen auf das gewettet werden soll
@@ -55,6 +55,10 @@ public class Wettbuero {
 		}
 	}
 	
+	/**
+	 * Getter Methode für rennId
+	 * @return {@code Rennen} das Rennen auf das gewettet wurde
+	 */
 	public Rennen getRennId() {
 		return rennId;
 	}
