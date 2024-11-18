@@ -9,7 +9,7 @@ public class Main {
 	 * Main Methode des Programms
 	 * @param args {@code String[]} Befehlszeilenargumente
 	 */
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) {
 		//Schnecken erstellen
 		Rennschnecke schnecke = new Rennschnecke(
 				"Frieda", 

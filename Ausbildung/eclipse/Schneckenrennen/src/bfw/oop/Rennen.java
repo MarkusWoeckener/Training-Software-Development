@@ -121,6 +121,7 @@ public class Rennen {
 	}
 
 	/**
+	 * Getter Methode für die Liste der teilnehmenden Schnecken
 	 * @return the schnecken
 	 */
 	public ArrayList<Rennschnecke> getSchnecken() {

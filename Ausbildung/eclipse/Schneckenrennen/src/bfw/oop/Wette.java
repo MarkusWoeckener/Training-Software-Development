@@ -26,6 +26,8 @@ public class Wette {
 		setSpieler(spieler);
 	}
 
+	//Getter Mehoden
+	
 	/**
 	 * Getter Methode für den Schneckennamen
 	 * @return {@code string} Name der Schnecke auf die gewettet wird
@@ -50,6 +52,8 @@ public class Wette {
 		return spieler;
 	}
 
+	//Setter Methoden
+	
 	/**
 	 * Setter Methode für den Schneckennamen
 	 * @param schneckenName {@code string} Name der Schnecke
@@ -74,6 +78,9 @@ public class Wette {
 		this.spieler = spieler;
 	}
 
+	/**
+	 * Eigene toString Methode für eine Wette
+	 */
 	@Override
 	public String toString() {
 		return String.format("Wette:\n"

@@ -16,6 +16,10 @@ public class Wettbuero {
 	private ArrayList<Wette> wetten;
 	private double faktor = 1.5;
 	
+	/**
+	 * Konstruktor für ein Wettbüro
+	 * @param rennId {@code Rennen} Das Rennen auf das gewettet werden soll
+	 */
 	public Wettbuero(Rennen rennId) {
 		setRennId(rennId);
 		this.wetten = new ArrayList<>();
