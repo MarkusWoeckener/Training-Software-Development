@@ -14,7 +14,7 @@ public class Funktionen {
 	 * @return Eingabe als {@code String}
 	 * @throws Exception
 	 */
-	public String readString() throws Exception{
+	public static String readString() throws Exception{
 		BufferedReader kb = new BufferedReader(new InputStreamReader(System.in));
 		return kb.readLine();
 	}
@@ -25,7 +25,7 @@ public class Funktionen {
 	 * @return Eingabe als {@code Double}
 	 * @throws Exception
 	 */
-	public double readDouble() throws Exception{
+	public static double readDouble() throws Exception{
 		return Double.parseDouble(readString());
 	}
 	
@@ -35,7 +35,7 @@ public class Funktionen {
 	 * @return Eingabe als {@code Integer}
 	 * @throws Exception
 	 */
-	public int readInt() throws Exception{
+	public static int readInt() throws Exception{
 		return Integer.parseInt(readString());
 	}
 	
@@ -45,7 +45,7 @@ public class Funktionen {
 	 * @return ein {@code Character} in {@code LowerCase}
 	 * @throws Exception
 	 */
-	public char readChar() throws Exception{
+	public static char readChar() throws Exception{
 		return Character.toLowerCase(readString().charAt(0));
 	}
 }
