@@ -4,6 +4,5 @@ The projects I'll be working on during my Job training to become a software deve
 It will mostly contain Java and Python scripts in their respective folders.
 
 ## Contents:
-- //Ausbildung/ will contain the PHP and Java scripts I'll write for the Software Development course
-
+- //Ausbildung/ will contain the PHP and Java scripts and projects I'll write for the Software Development course
 - //Eigenes/ will mostly contain Python scripts I work on outside of the curriculum and some Java
