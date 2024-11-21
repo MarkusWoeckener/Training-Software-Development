@@ -48,4 +48,12 @@ public class Funktionen {
 	public static char readChar() throws Exception{
 		return Character.toLowerCase(readString().charAt(0));
 	}
+
+	/**
+	 * Löscht die Konsole
+	 */
+	public static void clearConsole() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush(); //Ausgabe sofort an die Konsole schicken
+    }
 }

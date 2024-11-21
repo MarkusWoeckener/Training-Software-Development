@@ -127,4 +127,11 @@ public class Rennen {
 	public ArrayList<Rennschnecke> getSchnecken() {
 		return schnecken;
 	}
+
+	public void getSchneckenNamen() {
+		for (int i = 1; i <= schnecken.size(); i++) {
+			String name = schnecken.get(i - 1).getName();
+			System.out.println(i + " :" + name);
+		}
+	}
 }

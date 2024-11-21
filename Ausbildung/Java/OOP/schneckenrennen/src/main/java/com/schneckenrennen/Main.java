@@ -15,9 +15,17 @@ public class Main {
 		if (rennen != null) {
 			Ui.addRennschnecke(rennen);
 			Wettbuero wb = Ui.wettbuero(rennen);
-			//ToDo Wetten annehmen wenn Wettbüro vorhanden
-			Ui.wettAnnahme(wb);
+			if (wb != null) Ui.wettAnnahme(wb, rennen);
 			//ToDo Rennen durchführen
+			startRennen(rennen, wb);
+		}
+	}
+
+	static void startRennen(Rennen rennen, Wettbuero wb) {
+		if (wb != null) wb.rennenDurchfuehren(); //Output needs further tweaking!
+		else {
+			rennen.durchfuehren();
+			System.out.println(rennen);
 		}
 	}
 }

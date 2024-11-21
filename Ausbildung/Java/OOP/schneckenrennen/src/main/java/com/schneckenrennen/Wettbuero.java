@@ -83,6 +83,16 @@ public class Wettbuero {
 		this.rennId = rennId;
 	}
 
+	/**
+	 * Gibt die Schneckennamen auf die gewettet wurde aus
+	 */
+	public void getSchneckenNamen() {
+		for (int i = 1; i <= wetten.size(); i++) {
+			String name = wetten.get(i - 1).getSchneckenName();
+			System.out.println(i + " :" + name);
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "Wettbuero für " + rennId 

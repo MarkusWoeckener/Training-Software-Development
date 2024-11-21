@@ -10,6 +10,7 @@ public class Ui {
      * @throws Exception
      */
     public static void mainMenu() throws Exception{
+        Funktionen.clearConsole();
         System.out.println("Willkommen bei Schneckenrennen\n");
         System.out.println("Hauptmenu\n");
         System.out.println("1: Neues Rennen erstellen");
@@ -42,8 +43,9 @@ public class Ui {
         String name;
         int strecke;
 
+        Funktionen.clearConsole();
         System.out.println("Neues Rennen");
-        System.out.print("Name des Rennens: ");
+        System.out.print("\nName des Rennens: ");
         name = Funktionen.readString();
         System.out.print("Länge des Rennens: ");
         strecke = Funktionen.readInt();
@@ -62,10 +64,11 @@ public class Ui {
         double vMax;
 
         while (true) {
+            Funktionen.clearConsole();
             System.out.println("Neue Schnecke hinzufügen");
-            System.out.print("name: ");
+            System.out.print("Name: ");
             name = Funktionen.readString();
-            System.out.print("rasse: ");
+            System.out.print("Rasse: ");
             rasse = Funktionen.readString();
             System.out.print("Höchstgeschwindigkeit: ");
             vMax = Funktionen.readDouble();
@@ -83,6 +86,7 @@ public class Ui {
      * @throws Exception
      */
     static Wettbuero wettbuero(Rennen rennen) throws Exception{
+        Funktionen.clearConsole();
         System.out.println("Wettbuero erstellen");
         System.out.print("\nSoll ein Wettbüro erstellt werden (j/n)");
         if (Funktionen.readChar() == 'j') {
@@ -92,8 +96,27 @@ public class Ui {
         }
     }
 
-    static void wettAnnahme(Wettbuero wb) throws Exception{
-        //To be implemented
+    static void wettAnnahme(Wettbuero wb, Rennen rennen) throws Exception{
+        int i, wettEinsatz;
+        String scheckenName, spieler;
+
+        while (true) {
+            Funktionen.clearConsole();
+            System.out.println("Wetten annehmen\n");
+            rennen.getSchneckenNamen();
+            System.out.print("Auf welche Schnecke soll gewettet werden: ");
+            i = Funktionen.readInt() - 1;
+            scheckenName = wb.getRennId().getSchnecken().get(i).getName();
+            System.out.print("Wie viel soll gewettet werden: ");
+            wettEinsatz = Funktionen.readInt();
+            System.out.print("Spielername: ");
+            spieler = Funktionen.readString();
+
+            wb.wetteAnnehmen(scheckenName, wettEinsatz, spieler);
+
+            System.out.print("Noch eine Wette platzieren (j/n)? ");
+            if (Funktionen.readChar() != 'j') break;
+        }
     }
 
     /**
