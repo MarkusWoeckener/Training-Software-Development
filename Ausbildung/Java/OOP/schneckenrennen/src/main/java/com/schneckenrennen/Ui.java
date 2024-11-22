@@ -1,7 +1,7 @@
 package schneckenrennen;
 
 /**
- * Klasse die das Menü enthält
+ * Klasse die die Menüs enthält
  * @author WoeckenerM
  */
 public class Ui {
@@ -40,8 +40,8 @@ public class Ui {
      * @throws Exception
      */
     static Rennen rennenErstellen() throws Exception{
-        String name;
-        int strecke;
+        String name; //Name des neuen Rennens
+        int strecke; //Länge des neuen Rennens
 
         Funktionen.clearConsole();
         System.out.println("Neues Rennen");
@@ -50,7 +50,7 @@ public class Ui {
         System.out.print("Länge des Rennens: ");
         strecke = Funktionen.readInt();
 
-        Rennen rennen = new Rennen(name, strecke);
+        Rennen rennen = new Rennen(name, strecke); //Neues Rennen erzeugen
         return rennen;
     }
 
@@ -64,7 +64,10 @@ public class Ui {
         double vMax;
 
         while (true) {
+            //Konsole löschen
             Funktionen.clearConsole();
+
+            //Daten für eine Schnecke eingeben
             System.out.println("Neue Schnecke hinzufügen");
             System.out.print("Name: ");
             name = Funktionen.readString();
@@ -72,7 +75,14 @@ public class Ui {
             rasse = Funktionen.readString();
             System.out.print("Höchstgeschwindigkeit: ");
             vMax = Funktionen.readDouble();
-            rennen.addRennschnecke(new Rennschnecke(name, rasse, vMax));
+
+            //Schnecke dem Rennen hinzufügen
+            rennen.addRennschnecke(new Rennschnecke(
+                name,
+                rasse,
+                vMax));
+
+            //Benutzer fragen ob noch eine Schnecke eingegeben werden soll
             System.out.print("\nNoch eine Schnecke hinzufügen (j/n)?");
             if (Funktionen.readChar() != 'j') break;
         }
@@ -96,23 +106,39 @@ public class Ui {
         }
     }
 
+    /**
+     * Menü zur Eingeabe einer neuen Wette<br>
+     * Gibt mit Hilfe von {@code Rennen.toString} eine Liste<br>
+     * der Teilnehmenden Schnecken aus<br>
+     * Speichert die Wette mit {@code Wettbüro.wetteAnnehmen}
+     * @param wb {@code Wettbuero} das aktuelle Wettbüro
+     * @param rennen {@ Rennen} das Rennen auf das gewettet wird
+     * @throws Exception
+     */
     static void wettAnnahme(Wettbuero wb, Rennen rennen) throws Exception{
         int i, wettEinsatz;
         String scheckenName, spieler;
 
         while (true) {
-            Funktionen.clearConsole();
+            Funktionen.clearConsole(); //Konsole löschen
             System.out.println("Wetten annehmen\n");
-            rennen.getSchneckenNamen();
+            rennen.getSchneckenNamen(); //Liste der Schnecken ausgeben
+
+            //Schnecke auswählen
             System.out.print("Auf welche Schnecke soll gewettet werden: ");
             i = Funktionen.readInt() - 1;
+            //Namen der ausgewählten Schnecke speichern
             scheckenName = wb.getRennId().getSchnecken().get(i).getName();
+            //Wetteinsatz eingeben
             System.out.print("Wie viel soll gewettet werden: ");
             wettEinsatz = Funktionen.readInt();
+            //Spielername eingeben
             System.out.print("Spielername: ");
             spieler = Funktionen.readString();
 
-            wb.wetteAnnehmen(scheckenName, wettEinsatz, spieler);
+            //Die neue Wette im Wettbüro speichern
+            wb.wetteAnnehmen(
+                scheckenName, wettEinsatz, spieler);
 
             System.out.print("Noch eine Wette platzieren (j/n)? ");
             if (Funktionen.readChar() != 'j') break;

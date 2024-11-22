@@ -13,10 +13,10 @@ import java.util.ArrayList;
   * @author WoeckenerM
   */
 public class Rennen {
-	private String name;
-	private int nTeilnehmer;
-	private ArrayList<Rennschnecke> schnecken;
-	private int strecke;
+	private String name; //Name des Rennens
+	private int nTeilnehmer; //Anzahl der Teilnehmer
+	private ArrayList<Rennschnecke> schnecken; //Liste der teilnehmenden Schnecken
+	private int strecke; //Länge des Rennens
 	
 	/**
 	 * Konstruktor für ein Rennen
@@ -104,6 +104,8 @@ public class Rennen {
 		this.name = name;
 	}
 	
+	//Getter Methoden
+	
 	/**
 	 * Setter Methode für die Anzahl der Teilnehmer
 	 * @param anzahl {@code integer}, repräsentiert die Anzahl der teilnehmenden Schnecken
@@ -128,6 +130,9 @@ public class Rennen {
 		return schnecken;
 	}
 
+	/**
+	 * Gibt eine Liste der Teilnehmenden Schnecken aus
+	 */
 	public void getSchneckenNamen() {
 		for (int i = 1; i <= schnecken.size(); i++) {
 			String name = schnecken.get(i - 1).getName();
