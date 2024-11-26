@@ -1,4 +1,4 @@
-package schneckenrennen;
+//package schneckenrennen;
 
 /**
  * Klasse die eine Rennschnecke darstellt<p></p>

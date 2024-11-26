@@ -1,4 +1,4 @@
-package schneckenrennen;
+//package schneckenrennen;
 
 /**
  * Stellt eine Wette innerhalb des Wettbueros dar<p></p>

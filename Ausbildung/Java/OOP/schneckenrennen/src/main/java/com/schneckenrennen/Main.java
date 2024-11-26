@@ -1,4 +1,4 @@
-package schneckenrennen;
+//package schneckenrennen;
 
 /**
  * Main-Klasse des Projektes Schneckenrennen

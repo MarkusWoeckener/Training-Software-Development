@@ -8,5 +8,5 @@ public class Fenster {
         JOptionPane.showMessageDialog(
             null, 
             String.format("Hallo %s", name));
-    }
+    } //end of main
 }
