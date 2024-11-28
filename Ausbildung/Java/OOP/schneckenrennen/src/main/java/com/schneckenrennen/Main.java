@@ -13,7 +13,7 @@ public class Main {
 		int auswahl = Gui.mainMenu();
 		Rennen rennen = Gui.menuAuswahl(auswahl);
 		if (rennen != null) {
-			Ui.addRennschnecke(rennen);
+			Gui.addRennschnecke(rennen);
 			Wettbuero wb = Ui.wettbuero(rennen);
 			if (wb != null) Ui.wettAnnahme(wb, rennen);
 			//ToDo Rennen durchführen
