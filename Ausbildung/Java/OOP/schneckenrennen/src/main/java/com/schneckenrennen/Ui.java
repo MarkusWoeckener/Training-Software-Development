@@ -1,4 +1,4 @@
-//package schneckenrennen;
+package schneckenrennen;
 
 /**
  * Klasse die die Menüs enthält
