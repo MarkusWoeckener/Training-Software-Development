@@ -10,8 +10,8 @@ public class Main {
 	 * @param args {@code String[]} Befehlszeilenargumente
 	 */
 	public static void main(String[] args) throws Exception{
-		Ui.mainMenu();
-		Rennen rennen = Ui.menuAuswahl();
+		int auswahl = Gui.mainMenu();
+		Rennen rennen = Gui.menuAuswahl(auswahl);
 		if (rennen != null) {
 			Ui.addRennschnecke(rennen);
 			Wettbuero wb = Ui.wettbuero(rennen);
