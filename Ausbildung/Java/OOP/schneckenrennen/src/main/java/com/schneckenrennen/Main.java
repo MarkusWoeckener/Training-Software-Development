@@ -14,7 +14,7 @@ public class Main {
 		Rennen rennen = Gui.menuAuswahl(auswahl);
 		if (rennen != null) {
 			Gui.addRennschnecke(rennen);
-			Wettbuero wb = Ui.wettbuero(rennen);
+			Wettbuero wb = Gui.wettbuero(rennen);
 			if (wb != null) Ui.wettAnnahme(wb, rennen);
 			//ToDo Rennen durchführen
 			startRennen(rennen, wb);

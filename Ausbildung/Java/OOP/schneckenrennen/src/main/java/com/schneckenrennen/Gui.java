@@ -1,8 +1,5 @@
 package schneckenrennen;
 
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.*;
 import java.awt.*;
 
@@ -142,17 +139,17 @@ public class Gui {
      * und erstellt es für das aktuelle Rennen
      * @param rennen {@code Rennen} für das das Büro erstellt wird
      * @return {@code Wettbuero} ein neues Wettbüro
-     * @throws Exception
      */
-    static Wettbuero wettbuero(Rennen rennen) throws Exception{
-        Funktionen.clearConsole();
-        System.out.println("Wettbuero erstellen");
-        System.out.print("\nSoll ein Wettbüro erstellt werden (j/n)");
-        if (Funktionen.readChar() == 'j') {
+    static Wettbuero wettbuero(Rennen rennen) {
+        int auswahl = JOptionPane.showConfirmDialog(
+            null, 
+            "Soll ein Wettbüro erstellt werden?", 
+            "Wettbüro erstellen", 
+            JOptionPane.YES_NO_OPTION);
+        if(auswahl == JOptionPane.YES_OPTION) {
             return new Wettbuero(rennen);
-        } else {
-            return null;
         }
+        else return null;
     }
 
     /**
