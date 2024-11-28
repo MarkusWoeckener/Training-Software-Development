@@ -1,34 +1,42 @@
 package schneckenrennen;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * Klasse die die Menüs enthält
  * @author WoeckenerM
  */
-public class Ui {
+public class Gui {
     /**
      * Das Hauptmenü des Spiels
-     * @throws Exception
+     * @return {@code int} Auswahl des Benutzers
      */
-    public static void mainMenu() throws Exception{
-        Funktionen.clearConsole();
-        System.out.println("Willkommen bei Schneckenrennen\n");
-        System.out.println("Hauptmenu\n");
-        System.out.println("1: Neues Rennen erstellen");
-        System.out.println("2: Beispielrennen starten");
-        System.out.println("0: Beenden");
-        System.out.print("\nBitte wählen: ");
+    public static int mainMenu() {
+        //Array mit den Beschriftungen der Auswahlbuttons
+        String[] optionen = {"Neues Rennen", "Beispielrennen", "Beenden"};
+        //Dialogfenster anzeigen
+        return JOptionPane.showOptionDialog(
+            null,
+            "Willkommen bei Schneckenrennen\n"
+                + "Was möchten Sie tun?", 
+            "Hauptmenü", 
+            JOptionPane.DEFAULT_OPTION, 
+            JOptionPane.PLAIN_MESSAGE, 
+            null, 
+            optionen, 
+            optionen[0]);
     }
 
     /**
      * Auswhl ob ein neues oder das default Rennen erstellt wird
      * @return {@code Rennen} das neu erstellte Rennen
-     * @throws Exception
      */
-    static Rennen menuAuswahl() throws Exception{
-        switch(Funktionen.readInt()) {
-            case 1: return rennenErstellen();
-            case 2: beispielRennen();
-            case 0: break;
+    static Rennen menuAuswahl(int auswahl) {
+        switch(auswahl) {
+            case 0: return rennenErstellen();
+            case 1: beispielRennen();
+            case 2: break;
         }
         return null;
     }
@@ -37,54 +45,92 @@ public class Ui {
      * Erstellt ein neues Rennen<br>
      * Fordert den Benutzer auf, die Daten des neuen Rennens einzugeben.
      * @return {@code Rennen} das neue Rennen
-     * @throws Exception
      */
-    static Rennen rennenErstellen() throws Exception{
-        String name; //Name des neuen Rennens
-        int strecke; //Länge des neuen Rennens
+    static Rennen rennenErstellen() {
+        //Variablendeklaration
+        String name;
+        int strecke;
+        //Eingabefelder instanziieren
+        JTextField nameFeld = new JTextField();
+        JTextField streckeFeld = new JTextField();
 
-        Funktionen.clearConsole();
-        System.out.println("Neues Rennen");
-        System.out.print("\nName des Rennens: ");
-        name = Funktionen.readString();
-        System.out.print("Länge des Rennens: ");
-        strecke = Funktionen.readInt();
+        //Layout des Eingabedialogs erstellen
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(2, 2));
+        panel.add(new JLabel("Name des Rennens: "));
+        panel.add(nameFeld);
+        panel.add(new JLabel("Länge des Rennens: "));
+        panel.add(streckeFeld);
+
+        //Dialogfenster anzeigen
+        int auswahl = JOptionPane.showConfirmDialog(
+            null, 
+            panel, 
+            "Neues Rennen", 
+            JOptionPane.OK_CANCEL_OPTION);
+
+        //Wenn OK gedrückt wird Daten in den Variablen speichern
+        if (auswahl == JOptionPane.OK_OPTION) {
+            name = nameFeld.getText();
+            strecke = Integer.parseInt(streckeFeld.getText());
+        }
+        //oder NULL zurückgeben
+        else return null;
 
         Rennen rennen = new Rennen(name, strecke); //Neues Rennen erzeugen
         return rennen;
     }
 
+
     /**
      * Benutzereingabe für neue Schnecken für ein Rennen
      * @param rennen {@code Rennen} Das Rennen dem die Schnecken zugefügt werden
-     * @throws Exception
      */
-    static void addRennschnecke(Rennen rennen) throws Exception{
+    static void addRennschnecke(Rennen rennen) {
+        //Variablendeklaration
         String name, rasse;
         double vMax;
+        //Array mit den Beschriftungen der Auswahlbuttons
+        String [] optionen = {"Speichern", "Abbrechen"};
+        //Eingabefelder instanziieren
+        JTextField nameFeld = new JTextField();
+        JTextField rasseFeld = new JTextField();
+        JTextField vMaxFeld = new JTextField();
 
-        while (true) {
-            //Konsole löschen
-            Funktionen.clearConsole();
+        //Layout des Eingabedialogs erstellen
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 2));
+        panel.add(new JLabel("Name"));
+        panel.add(nameFeld);
+        panel.add(new JLabel("Rasse"));
+        panel.add(rasseFeld);
+        panel.add(new JLabel("Höchstgeschwindigkeit"));
+        panel.add(vMaxFeld);
 
-            //Daten für eine Schnecke eingeben
-            System.out.println("Neue Schnecke hinzufügen");
-            System.out.print("Name: ");
-            name = Funktionen.readString();
-            System.out.print("Rasse: ");
-            rasse = Funktionen.readString();
-            System.out.print("Höchstgeschwindigkeit: ");
-            vMax = Funktionen.readDouble();
+        while(true) {
+            //Dialogfenster anzeigen
+            int auswahl = JOptionPane.showOptionDialog(
+                null, 
+                panel, 
+                "Neue Schnecke hinzufügen", 
+                JOptionPane.OK_CANCEL_OPTION, 
+                JOptionPane.PLAIN_MESSAGE, 
+                null, 
+                optionen, 
+                null);
 
-            //Schnecke dem Rennen hinzufügen
-            rennen.addRennschnecke(new Rennschnecke(
-                name,
-                rasse,
-                vMax));
+            if(auswahl == JOptionPane.OK_OPTION) {
+                name = nameFeld.getText();
+                rasse = rasseFeld.getText();
+                vMax = Double.parseDouble(vMaxFeld.getText());
+                rennen.addRennschnecke(new Rennschnecke(name, rasse, vMax));
+            }
+            else break;
 
-            //Benutzer fragen ob noch eine Schnecke eingegeben werden soll
-            System.out.print("\nNoch eine Schnecke hinzufügen (j/n)?");
-            if (Funktionen.readChar() != 'j') break;
+            //Abfrage ob weitere Schnecke eingegeben werden soll
+            int weiter = JOptionPane.showConfirmDialog(null, 
+            "Noch eine Schnecke hinzufügen=", "Weitere Schnecke", JOptionPane.YES_NO_OPTION);
+            if(weiter == JOptionPane.NO_OPTION) break;
         }
     }
 
@@ -93,17 +139,17 @@ public class Ui {
      * und erstellt es für das aktuelle Rennen
      * @param rennen {@code Rennen} für das das Büro erstellt wird
      * @return {@code Wettbuero} ein neues Wettbüro
-     * @throws Exception
      */
-    static Wettbuero wettbuero(Rennen rennen) throws Exception{
-        Funktionen.clearConsole();
-        System.out.println("Wettbuero erstellen");
-        System.out.print("\nSoll ein Wettbüro erstellt werden (j/n)");
-        if (Funktionen.readChar() == 'j') {
+    static Wettbuero wettbuero(Rennen rennen) {
+        int auswahl = JOptionPane.showConfirmDialog(
+            null, 
+            "Soll ein Wettbüro erstellt werden?", 
+            "Wettbüro erstellen", 
+            JOptionPane.YES_NO_OPTION);
+        if(auswahl == JOptionPane.YES_OPTION) {
             return new Wettbuero(rennen);
-        } else {
-            return null;
         }
+        else return null;
     }
 
     /**
@@ -112,7 +158,7 @@ public class Ui {
      * der Teilnehmenden Schnecken aus<br>
      * Speichert die Wette mit {@code Wettbüro.wetteAnnehmen}
      * @param wb {@code Wettbuero} das aktuelle Wettbüro
-     * @param rennen {@code Rennen} das Rennen auf das gewettet wird
+     * @param rennen {@ Rennen} das Rennen auf das gewettet wird
      * @throws Exception
      */
     static void wettAnnahme(Wettbuero wb, Rennen rennen) throws Exception{

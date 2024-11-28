@@ -1,4 +1,4 @@
-//package schneckenrennen;
+package schneckenrennen;
 
 /**
  * Main-Klasse des Projektes Schneckenrennen
@@ -10,11 +10,11 @@ public class Main {
 	 * @param args {@code String[]} Befehlszeilenargumente
 	 */
 	public static void main(String[] args) throws Exception{
-		Ui.mainMenu();
-		Rennen rennen = Ui.menuAuswahl();
+		int auswahl = Gui.mainMenu();
+		Rennen rennen = Gui.menuAuswahl(auswahl);
 		if (rennen != null) {
-			Ui.addRennschnecke(rennen);
-			Wettbuero wb = Ui.wettbuero(rennen);
+			Gui.addRennschnecke(rennen);
+			Wettbuero wb = Gui.wettbuero(rennen);
 			if (wb != null) Ui.wettAnnahme(wb, rennen);
 			//ToDo Rennen durchführen
 			startRennen(rennen, wb);
