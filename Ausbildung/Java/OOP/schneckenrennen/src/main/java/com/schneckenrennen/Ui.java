@@ -1,4 +1,4 @@
-package schneckenrennen;
+//package schneckenrennen;
 
 /**
  * Klasse die die Menüs enthält
@@ -112,7 +112,7 @@ public class Ui {
      * der Teilnehmenden Schnecken aus<br>
      * Speichert die Wette mit {@code Wettbüro.wetteAnnehmen}
      * @param wb {@code Wettbuero} das aktuelle Wettbüro
-     * @param rennen {@ Rennen} das Rennen auf das gewettet wird
+     * @param rennen {@code Rennen} das Rennen auf das gewettet wird
      * @throws Exception
      */
     static void wettAnnahme(Wettbuero wb, Rennen rennen) throws Exception{
