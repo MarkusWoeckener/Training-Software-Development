@@ -104,8 +104,6 @@ public class Rennen {
 		this.name = name;
 	}
 	
-	//Getter Methoden
-	
 	/**
 	 * Setter Methode für die Anzahl der Teilnehmer
 	 * @param anzahl {@code integer}, repräsentiert die Anzahl der teilnehmenden Schnecken
@@ -121,6 +119,8 @@ public class Rennen {
 	public void setStrecke(int strecke) {
 		this.strecke = strecke;
 	}
+	
+	//Getter Methoden
 
 	/**
 	 * Getter Methode für die Liste der teilnehmenden Schnecken

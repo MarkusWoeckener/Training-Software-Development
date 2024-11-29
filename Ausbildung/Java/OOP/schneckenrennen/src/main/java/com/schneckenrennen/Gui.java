@@ -91,7 +91,7 @@ public class Gui {
         String name, rasse;
         double vMax;
         //Array mit den Beschriftungen der Auswahlbuttons
-        String [] optionen = {"Speichern", "Abbrechen"};
+        String[] optionen = {"Speichern", "Abbrechen"};
         //Eingabefelder instanziieren
         JTextField nameFeld = new JTextField();
         JTextField rasseFeld = new JTextField();
@@ -152,6 +152,8 @@ public class Gui {
         else return null;
     }
 
+    //TODO Ab hier die Methoden zu JOptionPane umwandeln:
+    
     /**
      * Menü zur Eingeabe einer neuen Wette<br>
      * Gibt mit Hilfe von {@code Rennen.toString} eine Liste<br>
