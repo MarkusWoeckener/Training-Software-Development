@@ -36,6 +36,7 @@ public class Rennen {
 	 */
 	public void addRennschnecke(Rennschnecke neueSchnecke) {
 		schnecken.add(neueSchnecke);
+		Datei.schneckeSpeichern(neueSchnecke);
 		setNTeilnehmer(schnecken.size());
 	}
 	
