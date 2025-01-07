@@ -46,7 +46,7 @@ public class Datei {
 	ObjectMapper mapper = new ObjectMapper();
 	File datei = new File(dateiname);
 	//TODO add try-catch block: JsonProcessingException, JsonMappingException
-	List<Person> personen = mapper.readValue(dateiname, new TypeReference<List<Person>>() {});
+	List<Person> personen = mapper.readValue(datei, new TypeReference<List<Person>>() {});
     }
 
 }//End of class
