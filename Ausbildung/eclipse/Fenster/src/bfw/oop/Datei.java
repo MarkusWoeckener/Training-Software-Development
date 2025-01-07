@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -40,12 +41,12 @@ public class Datei {
 	}
     }//EOM
 
-    public static void datenLesen() {
+    public static void datenLesen() throws Exception{
 	String dateiname = "personen.jsaon";
 	ObjectMapper mapper = new ObjectMapper();
 	File datei = new File(dateiname);
-	//TOFIX Bug in next line. TypeReference funktioniert nicht
-	List<Person> personen = mapper.readValue(dateiname, new TypeReferece<List<Person>>() {});
+	//TODO add try-catch block: JsonProcessingException, JsonMappingException
+	List<Person> personen = mapper.readValue(dateiname, new TypeReference<List<Person>>() {});
     }
 
 }//End of class
