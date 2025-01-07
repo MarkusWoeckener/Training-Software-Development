@@ -33,8 +33,8 @@ public class Gui {
     }//EOM
     
     /**
-     * Daten für eine neue Person eingeben<br>
-     * Öffnet eine Eingabemaske um die Daten für eine neue Person eingeben zu können.<br>
+     * Daten für eine neue Person eingeben
+     * <p>Öffnet eine Eingabemaske um die Daten für eine neue Person eingeben zu können.<br>
      * <p>Die einzugebenden Daten sind Nach- und Vorname und die Adresse.
      * @return die eingegebenen Daten als {@code Person} Objekt
      */
