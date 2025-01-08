@@ -1,6 +1,7 @@
 package bfw.oop;
 
 import java.awt.GridLayout;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -12,7 +13,8 @@ import javax.swing.JTextField;
  */
 public class Gui {
     /**
-     * Stellt das Hauptmenü dar
+     * Stellt das Hauptmenü dar<br>
+     * 
      * @return die gewählte Option als {@code int}
      */
     public static int hauptMenu() {
@@ -87,5 +89,17 @@ public class Gui {
 	}
 	//Wird abgebrochen, leeres Objekt zurückgeben
 	return null;
+    }//EOM
+
+    /**
+     * Gibt die gespeicherten Personen in einem Fenster aus.
+     * @param personen {@code List<Person>}
+     */
+    public static void datenAnzeigen(List<Person> personen) {
+	JOptionPane.showMessageDialog(
+		null, 
+		personen, 
+		"Gespeicherte Personen", 
+		JOptionPane.PLAIN_MESSAGE);
     }//EOM
 }//End of class

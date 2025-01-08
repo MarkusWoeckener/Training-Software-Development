@@ -3,8 +3,10 @@ package bfw.oop;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -41,12 +43,24 @@ public class Datei {
 	}
     }//EOM
 
-    public static void datenLesen() throws Exception{
+    public static List<Person> datenLesen() {
 	String dateiname = "personen.jsaon";
 	ObjectMapper mapper = new ObjectMapper();
 	File datei = new File(dateiname);
-	//TODO add try-catch block: JsonProcessingException, JsonMappingException
-	List<Person> personen = mapper.readValue(datei, new TypeReference<List<Person>>() {});
-    }
+	List<Person> personen = new ArrayList<Person>();
+	//Daten aus der JSON Datei in einer Array Liste speichern
+	try {
+	    personen = mapper.readValue(
+		    datei, 
+		    new TypeReference<List<Person>>() {});
+	}
+	catch(JsonProcessingException e) {
+	    System.out.println("Fehler beim Verarbeiten der Datei:\n" + e.getMessage());
+	}
+	catch(IOException e) {
+	    System.out.println("Fehler beim Lesen der Datei:\n" + e.getMessage());
+	}
+	return personen;
+    }//EOM
 
 }//End of class
