@@ -19,8 +19,9 @@ public class Main {
         if (auswahl == 0) {
             String password = JOptionPane.showInputDialog("Enter a new password:");
             if (password != null && !password.isEmpty()) {
+                String hash = HashUtils.hashPassword(password);
                 try {
-                    PasswordManager.savePasswordHash(password);
+                    PasswordManager.savePasswordHash(hash);
                     JOptionPane.showMessageDialog(
                         null, 
                         "Password set successfully!");
