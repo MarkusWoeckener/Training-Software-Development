@@ -3,7 +3,17 @@ package com.password;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Utility class for hashing passwords.<br>
+ * The passwords are hashed using the SHA-256 algorithm.<br>
+ * @author WoeckenerM
+ */
 public class HashUtils {
+    /**
+     * Hashes the given password using the SHA-256 algorithm.<br>
+     * @param password {@code String} the password to hash
+     * @return the hashed password as a {@code String}
+     */
     public static String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
