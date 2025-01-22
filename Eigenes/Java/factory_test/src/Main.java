@@ -1,4 +1,12 @@
+/**
+ * Main class to test the <i>factory</i> design pattern
+ * @author WoeckenerM
+ */
 public class Main {
+    /**
+     * Main method, shows the difference between creating a user with and without a factory
+     * @param args
+     */
     public static void main(String[] args) {
         String type = "moderator";
         int id = 2;

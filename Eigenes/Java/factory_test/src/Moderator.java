@@ -6,7 +6,7 @@ public class Moderator extends User {
     }
 
     // Moderator-specific methods
-    public static void moderatorMethod() {
+    public void moderatorMethod() {
         System.out.println("Moderator method");
     }
 
