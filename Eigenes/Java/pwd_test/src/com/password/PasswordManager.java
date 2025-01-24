@@ -33,7 +33,9 @@ public class PasswordManager {
     }
 
     /**
-     * Verifies the entered password by comparing the hash with the saved hash.<br>
+     * Verifies the entered password.<br>
+     * It compares the hash with the saved hash.<br>
+     * The saved hash is read by using {@link readPassword()}
      * @param password {@code String} the password to verify
      * @return {@code true} if the password is correct, {@code false} otherwise
      * @throws IOException
