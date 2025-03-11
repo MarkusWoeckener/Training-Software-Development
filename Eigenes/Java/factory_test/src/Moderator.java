@@ -1,5 +1,8 @@
-
-// Moderator
+/**
+ * Moderator class
+ * Represents a moderator user in the system.
+ * Extends the {@link User} class.
+ */
 public class Moderator extends User {
     public Moderator(int id, String name) {
         super(id, name);
