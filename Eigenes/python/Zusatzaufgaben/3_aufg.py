@@ -1,3 +1,16 @@
+# Aufgabe: Schreiben Sie ein Programm, das folgende Ausgabe erzeugt:
+#
+# *
+# * *
+# * * *
+# * * * *
+# * * * * *
+# * * * * *
+# * * * *
+# * * *
+# * *
+# *
+
 for i in range(5):
     for n in range(i+1):
         print("* ", end="")

@@ -1,3 +1,6 @@
+# Aufgabe 5: Fakultät berechnen
+# Schreiben Sie ein Programm, das die Fakultät einer Zahl berechnet.
+
 # Variable deklarieren und auf Startwert 1 setzen
 result: int = 1
 
