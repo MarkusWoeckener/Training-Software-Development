@@ -50,10 +50,11 @@ public class PasswordManager {
             Transformer transformer = transformerFactory.newTransformer();
             // set the output properties
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            // create a DOM source
+            // create a Document Object Model source
             DOMSource domSource = new DOMSource(document);
             StreamResult streamResult = new StreamResult(new File(FILE_PATH));
 
+            // save the document
             transformer.transform(domSource, streamResult);
 
         } catch (ParserConfigurationException | TransformerException e) {
