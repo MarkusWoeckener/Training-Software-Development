@@ -6,7 +6,6 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.io.IOException;
 
 /**
  * Utility class for managing the password.<br>
@@ -18,87 +17,95 @@ public class PasswordManager {
     private static final String FILE_PATH = "password.xml";
 
     /**
-     * Saves the password hash in an XML file.<br>
-     * @param hash {@code String} the password hash to save
-     * @throws IOException
+     * Saves the user data in an XML file.<br>
+     * If the file does not exist, it will be created.<br>
+     * If the file exists, the new user data will be added to the existing file.<br>
+     * @param userName {@code String} the user name
+     * @param hash {@code String} the hashed password
      */
-    public static void savePasswordHash(String hash) throws IOException {
+    public static void saveUserData(String userName, String hash) {
         try {
-            // create the document
+            File xmlFile = new File(FILE_PATH);
             DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
-            // create a document builder
             DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
-            // create an empty document
-            Document document = documentBuilder.newDocument();
+            Document document;
 
-            // root element
-            Element root = document.createElement("passwords");
-            document.appendChild(root);
+            // Überprüfen, ob die Datei existiert
+            if (xmlFile.exists()) {
+                // Vorhandene Datei einlesen
+                document = documentBuilder.parse(xmlFile);
+                document.getDocumentElement().normalize();
+            } else {
+                // Neues Dokument erstellen, wenn die Datei nicht existiert
+                document = documentBuilder.newDocument();
+                Element root = document.createElement("users");
+                document.appendChild(root);
+            }
 
-            // password element
+            // Root-Element abrufen
+            Element root = document.getDocumentElement();
+
+            // Neues Benutzer-Element erstellen
+            Element user = document.createElement("user");
+
+            Element userNameElement = document.createElement("userName");
+            userNameElement.appendChild(document.createTextNode(userName));
+            user.appendChild(userNameElement);
+
             Element password = document.createElement("password");
-            root.appendChild(password);
+            user.appendChild(password);
 
-            // hash element
             Element hashElement = document.createElement("hash");
             hashElement.appendChild(document.createTextNode(hash));
             password.appendChild(hashElement);
 
-            // create the xml file
+            // Neues Benutzer-Element zum Root-Element hinzufügen
+            root.appendChild(user);
+
+            // XML-Datei speichern
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            // create a transformer
             Transformer transformer = transformerFactory.newTransformer();
-            // set the output properties
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            // create a Document Object Model source
             DOMSource domSource = new DOMSource(document);
             StreamResult streamResult = new StreamResult(new File(FILE_PATH));
-
-            // save the document
             transformer.transform(domSource, streamResult);
 
-        } catch (ParserConfigurationException | TransformerException e) {
-            throw new IOException("An error occurred while saving the password hash", e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
     /**
-     * Reads the password hash from an XML file.<br>
-     * @return the password hash as a {@code String}
-     * @throws IOException
+     * Verifies the user<br>
+     * by comparing theentered user name and the  hash of the entered password<br>
+     * with the saved hash.<br>
+     * @param userName {@code String} the user name
+     * @param password {@code String} the password
+     * @return {@code boolean} true if the password is correct, false otherwise
      */
-    public static String readPasswordHash() throws IOException {
+    public static boolean verifyUser(String userName, String password) {
         try {
             File xmlFile = new File(FILE_PATH);
             DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
             Document document = documentBuilder.parse(xmlFile);
-
             document.getDocumentElement().normalize();
 
-            NodeList nodeList = document.getElementsByTagName("hash");
-            if (nodeList.getLength() > 0) {
-                return nodeList.item(0).getTextContent();
-            } else {
-                throw new IOException("No password hash found in the XML file");
+            NodeList userList = document.getElementsByTagName("user");
+
+            for (int i = 0; i < userList.getLength(); i++) {
+                Element user = (Element) userList.item(i);
+                String savedUserName = user.getElementsByTagName("userName").item(0).getTextContent();
+                String savedHash = user.getElementsByTagName("hash").item(0).getTextContent();
+
+                if (savedUserName.equals(userName)) {
+                    String hash = HashUtils.hashPassword(password);
+                    return hash.equals(savedHash);
+                }
             }
-
         } catch (Exception e) {
-            throw new IOException("An error occurred while reading the password hash", e);
+            throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * Verifies the entered password.<br>
-     * It compares the hash with the saved hash.<br>
-     * The saved hash is read by using {@code readPasswordHash()}
-     * @param password {@code String} the password to verify
-     * @return {@code true} if the password is correct, {@code false} otherwise
-     * @throws IOException
-     */
-    public static boolean verifyPassword(String password) throws IOException {
-        String storedHash = readPasswordHash();
-        String inputHash = HashUtils.hashPassword(password);
-        return storedHash.equals(inputHash);
+        return false;
     }
 }
