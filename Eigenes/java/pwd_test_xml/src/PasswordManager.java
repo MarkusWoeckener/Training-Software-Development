@@ -108,4 +108,35 @@ public class PasswordManager {
         }
         return false;
     }
+
+    /**
+     * Returns the list of users<br>
+     * @return {@code String[]} the list of users
+     */
+    public static String[] getUserList() {
+        try {
+            File xmlFile = new File(FILE_PATH);
+            DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+            Document document = documentBuilder.parse(xmlFile);
+            document.getDocumentElement().normalize();
+
+            // Get the list of users from the XML file
+            NodeList userList = document.getElementsByTagName("user");
+            String[] users = new String[userList.getLength()];
+
+            // Iterate through the user list and add each user to the array
+            for (int i = 0; i < userList.getLength(); i++) {
+                // Get the user element and extract the user name
+                Element user = (Element) userList.item(i);
+                // Get the user name from the XML element
+                String userName = user.getElementsByTagName("userName").item(0).getTextContent();
+                // Add the user name to the array
+                users[i] = userName;
+            }
+            return users;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -1,7 +1,6 @@
 package com.password;
 
 import javax.swing.*;
-import java.io.IOException;
 
 /**
  * Main class of the Password Manager.<br>
@@ -13,7 +12,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         //Define the options for the user
-        String[] options = {"New User", "Verify Password"};
+        String[] options = {"New User", "Login", "List Users"};
 
         //Show a dialog with the options to set or verify the password
         int auswahl = JOptionPane.showOptionDialog(
@@ -34,16 +33,32 @@ public class Main {
         else if (auswahl == 1) {
             verifyUserData();
         }
+        //If the user selects the third option, list all users
+        else if (auswahl == 2) {
+            listUsers();
+        }
     }//End of main
+
+    private static void listUsers() {
+        //Show a dialog with the list of users
+        StringBuilder userList = new StringBuilder();
+        //Get the list of users from the PasswordManager class
+        for (String user : PasswordManager.getUserList()) {
+            userList.append(user).append("\n");
+        }
+        JOptionPane.showMessageDialog(
+            null,
+            "Users:\n" + userList);
+    }
 
     private static void verifyUserData() {
         //Show an input dialog to enter the user name
-        String userName = JOptionPane.showInputDialog(
-            "Enter your user name:");
+        String userName = JOptionPane.showInputDialog("Enter your user name:");
         //Show an input dialog to enter the password
         String password = JOptionPane.showInputDialog("Enter your password:");
-        //If the password is not empty, verify it
-        if (password != null && !password.isEmpty()) {
+        //If the user data is not empty, verify it
+        if (userName != null && !userName.isEmpty() &&
+                password != null && !password.isEmpty()) {
             if (PasswordManager.verifyUser(userName, password)) {
                 JOptionPane.showMessageDialog(
                     null,
@@ -63,7 +78,7 @@ public class Main {
             "Enter a new user name:");
         String password = JOptionPane.showInputDialog(
             "Enter a new password:");
-        //If the user data is not empty, hash it and save it
+        //If the user data is not empty, hash the password and save
         if (!userName.isEmpty() && password != null && !password.isEmpty()) {
             String hash = HashUtils.hashPassword(password);
             PasswordManager.saveUserData(userName, hash);
