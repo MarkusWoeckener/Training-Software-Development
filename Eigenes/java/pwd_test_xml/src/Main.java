@@ -28,40 +28,48 @@ public class Main {
 
         //If the user selects the first option, create a new user
         if (auswahl == 0) {
-            //Show an input dialog to enter the user name and passord of the new user
-            String userName = JOptionPane.showInputDialog(
-                "Enter a new user name:");
-            String password = JOptionPane.showInputDialog(
-                "Enter a new password:");
-            //If the password is not empty, hash it and save it
-            if (password != null && !password.isEmpty()) {
-                String hash = HashUtils.hashPassword(password);
-                PasswordManager.saveUserData(userName, hash);
-                JOptionPane.showMessageDialog(
-                    null,
-                    "Password set successfully!");
-            }
+            createNewUser();
         }
         //If the user selects the second option, verify the password
         else if (auswahl == 1) {
-            //Show an input dialog to enter the user name
-            String userName = JOptionPane.showInputDialog(
-                "Enter your user name:");
-            //Show an input dialog to enter the password
-            String password = JOptionPane.showInputDialog("Enter your password:");
-            //If the password is not empty, verify it
-            if (password != null && !password.isEmpty()) {
-                if (PasswordManager.verifyUser(userName, password)) {
-                    JOptionPane.showMessageDialog(
-                        null,
-                        "Password is correct!");
-                }
-                else {
-                    JOptionPane.showMessageDialog(
-                        null,
-                        "Password is incorrect!");
-                }
-            }
+            verifyUserData();
         }
     }//End of main
+
+    private static void verifyUserData() {
+        //Show an input dialog to enter the user name
+        String userName = JOptionPane.showInputDialog(
+            "Enter your user name:");
+        //Show an input dialog to enter the password
+        String password = JOptionPane.showInputDialog("Enter your password:");
+        //If the password is not empty, verify it
+        if (password != null && !password.isEmpty()) {
+            if (PasswordManager.verifyUser(userName, password)) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Password is correct!");
+            }
+            else {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Password is incorrect!");
+            }
+        }
+    }
+
+    private static void createNewUser() {
+        //Show an input dialog to enter the user name and password of the new user
+        String userName = JOptionPane.showInputDialog(
+            "Enter a new user name:");
+        String password = JOptionPane.showInputDialog(
+            "Enter a new password:");
+        //If the user data is not empty, hash it and save it
+        if (!userName.isEmpty() && password != null && !password.isEmpty()) {
+            String hash = HashUtils.hashPassword(password);
+            PasswordManager.saveUserData(userName, hash);
+            JOptionPane.showMessageDialog(
+                null,
+                "Password set successfully!");
+        }
+    }
 }//End of class
