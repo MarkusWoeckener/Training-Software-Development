@@ -14,31 +14,36 @@ public class Main {
         //Define the options for the user
         String[] options = {"New User", "Login", "List Users"};
 
-        //Show a dialog with the options to set or verify the password
-        int auswahl = JOptionPane.showOptionDialog(
-            null,
-            "Choose an Option",
-            "Password Manager",
-            JOptionPane.DEFAULT_OPTION,
-            0,
-            null,
-            options,
-            options[0]);
+        while (true) {
+            //Show a dialog with the options to set or verify the password
+            int auswahl = JOptionPane.showOptionDialog(
+                    null,
+                    "Choose an Option",
+                    "Password Manager",
+                    JOptionPane.DEFAULT_OPTION,
+                    0,
+                    null,
+                    options,
+                    options[0]);
 
-        //If the user selects the first option, create a new user
-        if (auswahl == 0) {
-            createNewUser();
-        }
-        //If the user selects the second option, verify the password
-        else if (auswahl == 1) {
-            verifyUserData();
-        }
-        //If the user selects the third option, list all users
-        else if (auswahl == 2) {
-            listUsers();
+            //If the user selects the first option, create a new user
+            if (auswahl == 0) {
+                createNewUser();
+            }
+            //If the user selects the second option, verify the password
+            else if (auswahl == 1) {
+                verifyUserData();
+            }
+            //If the user selects the third option, list all users
+            else if (auswahl == 2) {
+                listUsers();
+            } else break;
         }
     }//End of main
 
+    /**
+     * Shows a dialog with the list of users.<br>
+     * */
     private static void listUsers() {
         //Show a dialog with the list of users
         StringBuilder userList = new StringBuilder();
@@ -51,6 +56,11 @@ public class Main {
             "Users:\n" + userList);
     }
 
+    /**
+     * Shows a dialog to enter the user name and password.<br>
+     * If the user data is not empty, verify it. By comparing<br>
+     * entered Information with the saved hash.<br>
+     * */
     private static void verifyUserData() {
         //Show an input dialog to enter the user name
         String userName = JOptionPane.showInputDialog("Enter your user name:");
@@ -72,6 +82,10 @@ public class Main {
         }
     }
 
+    /**
+     * Shows a dialog to enter the user name and password.<br>
+     * If the user data is not empty, hash the password and save it.<br>
+     * */
     private static void createNewUser() {
         //Show an input dialog to enter the user name and password of the new user
         String userName = JOptionPane.showInputDialog(
