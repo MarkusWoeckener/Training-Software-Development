@@ -21,7 +21,7 @@ public class Main {
                     "Choose an Option",
                     "Password Manager",
                     JOptionPane.DEFAULT_OPTION,
-                    0,
+                    JOptionPane.PLAIN_MESSAGE,
                     null,
                     options,
                     options[0]);
