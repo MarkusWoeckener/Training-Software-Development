@@ -7,6 +7,14 @@ import org.junit.jupiter.api.Test;
 
 class FakultaetTest {
     @Test
+    void testDurchschnitt(){
+	Fakultaet f = new Fakultaet();
+	double[] numbers = {2, 4, 6};
+	double result = f.durchschnitt(numbers);
+	assertEquals(4, result, "should be 4");
+    }
+    
+    @Test
     void testFakultaet6() {
 	//given
 	Fakultaet f = new Fakultaet();

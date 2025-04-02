@@ -1,6 +1,15 @@
 package bfw.oop;
 
 public class Fakultaet {
+    
+    public double durchschnitt(double[] numbers) {
+	double sum = 0;
+	for(double number: numbers) {
+	    sum += number;
+	}
+	return sum / numbers.length;
+    }
+    
 	public long fakultaet(int number) throws IllegalArgumentException {
 		if (number < 1) {
 			throw new IllegalArgumentException("Zahl muss groesser gleich 1 sein!");
